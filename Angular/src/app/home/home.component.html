@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+     <span><a href="/">HOME</a></span>
+     <span class="spacer"></span>
+     <button mat-button [matMenuTriggerFor]="menu">Trends</button>
+       <mat-menu #menu="matMenu">
+        <a  mat-button  routerLink="/createtrends">create trends</a><br>
+        <a  mat-button  routerLink="#">view trends</a>
+      </mat-menu>
+     <a  mat-button  routerLink="/login">Login</a>
+  </mat-toolbar-row>
+</mat-toolbar>

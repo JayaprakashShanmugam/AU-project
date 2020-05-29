@@ -1,0 +1,27 @@
+<app-home></app-home>
+<mat-toolbar>
+  <span>User Login</span>
+</mat-toolbar>
+<mat-card>
+  <span class="example-container-email">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </span>
+  <br>
+  <span class="example-container-password">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </span> 
+  <br> 
+  <span>
+    <button mat-raised-button (click)="Login()" color="primary">REGISTER</button>
+  </span>
+</mat-card>

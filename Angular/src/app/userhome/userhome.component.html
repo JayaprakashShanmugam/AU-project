@@ -1,0 +1,27 @@
+<app-home></app-home>
+<mat-toolbar>
+  <span>Create Trends</span>
+</mat-toolbar>
+<mat-card-content>
+  <form class="my-form">
+     <mat-form-field class="full-width">
+            <mat-label>Trend Name</mat-label>
+            <input  matInput  placeholder="name"  name="fname"  required>
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Trend Title</mat-label>
+            <input  matInput  placeholder="Title" name="title"  required>
+         </mat-form-field>
+         <mat-form-field class="full-width">
+          <mat-label>Trend Location</mat-label>
+          <input  matInput  placeholder="Location" name="location"  required>
+       </mat-form-field>        
+      <mat-radio-group aria-label="Qualification">
+        <mat-radio-button value="ug">UG</mat-radio-button>
+        <mat-radio-button value="pg">PG</mat-radio-button>
+      </mat-radio-group><br><br>
+         <mat-card-actions>
+          <button mat-raised-button (click)="onCreate()" color="primary">REGISTER</button>
+        </mat-card-actions>
+  </form>
+</mat-card-content>
