@@ -1,4 +1,6 @@
-package com.example.SQL.Controller;
+package service;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,24 +10,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.SQL.UserDao.userdao;
-import com.example.SQL.model.User;
 
+
+import model.Employee;
+import repository.employeedao;
 
 @RestController
 @RequestMapping(path="/demo")
-public class Controller {
+public class EmployeeService {
+	
 	@Autowired
-	private userdao dao;
+	private employeedao dao;
 	
 	 @PostMapping(path="/add") 
 	 public @ResponseBody String addNewUser (@RequestParam String name)
 	 {
-		 User n = new User();
-		    n.setName(name);
-		    dao.save(n);
+		  Employee emp = new Employee();
+		    emp.setName(name);
+		    dao.save(emp);
 		    return "Saved";
 	 }
-	
+	@GetMapping(path="/get")
+	public Iterable<Employee> getemployee()
+	{
+		return dao.findAll();
+	}
 
 }
