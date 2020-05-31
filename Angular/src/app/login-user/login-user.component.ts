@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-
-import {FormControl, Validators} from '@angular/forms';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 
 @Component({
@@ -9,20 +8,30 @@ import {FormControl, Validators} from '@angular/forms';
   templateUrl: './login-user.component.html',
   styleUrls: ['./login-user.component.css']
 })
-export class LoginUserComponent {
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+export class LoginUserComponent implements OnInit {
+  signinForm: FormGroup;
+  user: SocialUser;
+  loggedIn: boolean;    
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  constructor(private fb: FormBuilder, private authService: AuthService){}
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  ngOnInit(): void {
+    this.signinForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log(this.user);
+    });
   }
 
-  Login()
-  {
-    alert("Welcome Admin")
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+  signOut(): void {
+    this.authService.signOut();
+  }
+
+  
 }

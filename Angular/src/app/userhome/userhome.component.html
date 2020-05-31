@@ -2,26 +2,96 @@
 <mat-toolbar>
   <span>Create Trends</span>
 </mat-toolbar>
-<mat-card-content>
-  <form class="my-form">
-     <mat-form-field class="full-width">
-            <mat-label>Trend Name</mat-label>
-            <input  matInput  placeholder="name"  name="fname"  required>
-         </mat-form-field>
+
+<mat-card>       
+  <mat-card-title>    
+      Details Needed for Trend Creation   
+  </mat-card-title>    
+  <mat-card-content>    
+      <form>    
+          <table>    
+              <tr>    
+                  <td>    
+                    <mat-form-field class="full-width">
+                      <mat-label>OpportunityId</mat-label>
+                      <input  matInput type="number" placeholder="OpportunityId"  name="OpportunityId"  required>
+                   </mat-form-field>   
+                  </td>        
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                    <mat-form-field class="full-width">
+                      <mat-label>OppurtunityDescription</mat-label>
+                      <input  matInput  placeholder="Description" name="Description"  required>
+                   </mat-form-field>    
+                  </td>    
+              </tr>    
+              
+              <tr>    
+                  <td>    
          <mat-form-field class="full-width">
-            <mat-label>Trend Title</mat-label>
-            <input  matInput  placeholder="Title" name="title"  required>
-         </mat-form-field>
-         <mat-form-field class="full-width">
-          <mat-label>Trend Location</mat-label>
-          <input  matInput  placeholder="Location" name="location"  required>
-       </mat-form-field>        
-      <mat-radio-group aria-label="Qualification">
-        <mat-radio-button value="ug">UG</mat-radio-button>
-        <mat-radio-button value="pg">PG</mat-radio-button>
-      </mat-radio-group><br><br>
-         <mat-card-actions>
-          <button mat-raised-button (click)="onCreate()" color="primary">REGISTER</button>
-        </mat-card-actions>
-  </form>
-</mat-card-content>
+          <mat-label>Location</mat-label>
+          <input  matInput  placeholder="Location" name="Location"  required>
+       </mat-form-field>     
+                  </td>    
+                     
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                    <mat-form-field class="full-width">
+                      <mat-label>Skills</mat-label>
+                      <input  matInput  placeholder="Skills"  name="Skills"  required>
+                   </mat-form-field> 
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                    <mat-form-field class="full-width">
+                      <mat-label>OpeningCount</mat-label>
+                      <input  matInput  placeholder="OpeningCount" name="OpeningCount"  required>
+                   </mat-form-field>
+                  </td>    
+              </tr>  
+              <tr>    
+                <td colspan="2">    
+                  <mat-form-field class="full-width">
+                    <mat-label>ProjectDuration</mat-label>
+                    <input  matInput  placeholder="ProjectDuration in Days" name="ProjectDuration"  required>
+                 </mat-form-field>
+                </td>    
+            </tr>  
+            <tr>    
+              <td colspan="2">    
+                <mat-form-field class="full-width">
+                  <mat-label>Experience</mat-label>
+                  <input  matInput  placeholder="Experience" name="Experience"  required>
+               </mat-form-field> 
+              </td>    
+          </tr>  
+          <tr>    
+            <td colspan="2">    
+              <mat-form-field class="full-width">
+                <mat-label>ManagerName</mat-label>
+                <input  matInput  placeholder="ManagerName" name="ManagerName"  required>
+              </mat-form-field>
+            </td>    
+        </tr>  
+        <tr>    
+          <td colspan="2">    
+            <mat-form-field class="full-width">
+              <mat-label>ManagerEmail</mat-label>
+              <input  matInput type="email"  placeholder="ManagerEmail" name="ManagerEmail"  required>
+            </mat-form-field> 
+          </td>    
+      </tr>  
+              <tr>    
+                  <td colspan="2" class="content-center">    
+                      <button mat-raised-button color="primary" (click)="onCreate()">Create</button> &nbsp;&nbsp;&nbsp;   
+                      <button mat-raised-button color="primary" type="reset">Clear</button>    
+                  </td>    
+              </tr>    
+          </table>    
+      </form>    
+      
+  </mat-card-content>    
+</mat-card> 

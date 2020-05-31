@@ -1,27 +1,35 @@
 <app-home></app-home>
 <mat-toolbar>
-  <span>User Login</span>
+  User Account Details&nbsp;&nbsp;&nbsp; 
 </mat-toolbar>
-<mat-card>
-  <span class="example-container-email">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </span>
-  <br>
-  <span class="example-container-password">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-  </span> 
-  <br> 
-  <span>
-    <button mat-raised-button (click)="Login()" color="primary">REGISTER</button>
-  </span>
+
+<mat-card>  
+     
+   <div *ngIf="loggedIn===false">
+    <mat-card-content>Kindly Sign In</mat-card-content> 
+    <mat-icon>supervisor_account</mat-icon>   
+        <form [formGroup]="signinForm">
+        </form>
+        <div>
+          <button mat-raised-button color="primary" (click)="signInWithGoogle()" class="btn btn-primary">Sign In With Google+</button>
+        </div>
+      </div> 
+      <div *ngIf="loggedIn===true">
+        <mat-card-content>Signed In with Google</mat-card-content> 
+        <mat-icon>supervisor_account</mat-icon> 
+        <mat-icon>verified_user</mat-icon>
+        <div class="form-group">
+          <label for="firstname">First Name:&nbsp;&nbsp;;</label>
+
+          <input type="text" class="form-control" id="firstname" [value]="user.firstName" readonly >
+        </div>          <div class="form-group">
+          <label for="lastname">Last Name:&nbsp;&nbsp;</label>
+          <input type="text" class="form-control" id="lastname" [value]="user.lastName" readonly >
+        </div>          <div class="form-group">
+          <label for="email2">Email:&nbsp;&nbsp;</label>
+          <input type="email" class="form-control" id="email2" [value]="user.email" readonly >
+        </div>
+       <br>
+        <button mat-raised-button color="primary" (click)="signOut()" class="btn btn-primary">Sign Out</button>      
+         </div>   
 </mat-card>

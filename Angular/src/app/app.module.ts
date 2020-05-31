@@ -22,6 +22,20 @@ import { TrendstableComponent } from './trendstable/trendstable.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("87799260793-3utvvare40obu3pa17c2sfu1ksvbnlm4.apps.googleusercontent.com")
+  }
+]);
+export function provideConfig() {
+  return config;
+}
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +44,7 @@ import {MatSortModule} from '@angular/material/sort';
     HomeComponent,
     UserhomeComponent,
     TrendstableComponent,
+   
     
     
     
@@ -54,13 +69,20 @@ import {MatSortModule} from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatAutocompleteModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    SocialLoginModule
 
     
     
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
