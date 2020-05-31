@@ -1,0 +1,76 @@
+<app-home></app-home>
+<mat-toolbar>
+  Trends&nbsp;&nbsp;&nbsp; 
+</mat-toolbar>
+<mat-toolbar>
+<mat-icon>search</mat-icon> 
+ <mat-form-field class="example-full-width">
+     <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Trends" >   
+ </mat-form-field>   
+</mat-toolbar>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="Oid">
+        <th mat-header-cell *matHeaderCellDef> Opportunity Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.Oid}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ODes">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.ODes}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="Location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.Location}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="skill">
+        <th mat-header-cell *matHeaderCellDef> Skill </th>
+        <td mat-cell *matCellDef="let element"> {{element.skill}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Opencount">
+        <th mat-header-cell *matHeaderCellDef> Opencount </th>
+        <td mat-cell *matCellDef="let element"> {{element.Opencount}} </td>
+      </ng-container>
+      
+       
+      <ng-container matColumnDef="projectduration">
+        <th mat-header-cell *matHeaderCellDef> ProjectDuration </th>
+        <td mat-cell *matCellDef="let element"> {{element.projectduration}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="LastDate">
+        <th mat-header-cell *matHeaderCellDef> LastDate </th>
+        <td mat-cell *matCellDef="let element"> {{element.LastDate | date:'dd-MM-yyyy'}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="Experience">
+        <th mat-header-cell *matHeaderCellDef> Experience </th>
+        <td mat-cell *matCellDef="let element"> {{element.Experience}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ManagerName">
+        <th mat-header-cell *matHeaderCellDef> ManagerName </th>
+        <td mat-cell *matCellDef="let element"> {{element.ManagerName}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="ManagerEmail">
+        <th mat-header-cell *matHeaderCellDef> ManagerEmail </th>
+        <td mat-cell *matCellDef="let element"> {{element.ManagerEmail}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  

@@ -17,6 +17,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
+import { TrendstableComponent } from './trendstable/trendstable.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,10 @@ import {MatRadioModule} from '@angular/material/radio';
     LoginUserComponent,
     HomeComponent,
     UserhomeComponent,
+    TrendstableComponent,
+    
+    
+    
     
   ],
   imports: [
@@ -41,7 +50,14 @@ import {MatRadioModule} from '@angular/material/radio';
     MatToolbarModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatSortModule
+
+    
+    
     
   ],
   providers: [],
