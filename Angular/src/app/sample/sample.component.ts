@@ -1,27 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Opportunity } from '../opportunity';
+import { Component, OnInit } from '@angular/core';
+import { LoginUserService } from '../login-user.service';
 import { OpportunityserviceService } from '../opportunityservice.service';
+import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
 
 
-
 @Component({
-  selector: 'app-userhome',
-  templateUrl: './userhome.component.html',
-  styleUrls: ['./userhome.component.css']
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.css']
 })
-export class UserhomeComponent implements OnInit {
-
+export class SampleComponent implements OnInit {
   Opportunity:Opportunity=new Opportunity(0,"","","",0,0,"","","","");
   message:any;
   responsemessage:string;
-  
   constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar) { }
    
   ngOnInit(): void {
-    
+   
   }
+ 
   email = new FormControl('', [Validators.required, Validators.email]);
  
   getErrorMessage() {
@@ -30,7 +29,9 @@ export class UserhomeComponent implements OnInit {
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  public savenow(){
+  
+
+   updatenow(){
     let resp =this.OpportunityServiceService.dosave(this.Opportunity);
     resp.subscribe((data)=>this.message=data);
     console.log(resp);
@@ -40,9 +41,6 @@ export class UserhomeComponent implements OnInit {
 
   }
 
-  
+ 
 
-
-  
-  
 }

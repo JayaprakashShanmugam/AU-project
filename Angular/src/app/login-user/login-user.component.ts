@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-
-
+import { LoginUserService } from '../login-user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { Login } from '../login';
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
@@ -12,8 +13,8 @@ export class LoginUserComponent implements OnInit {
   signinForm: FormGroup;
   user: SocialUser;
   loggedIn: boolean;    
-
-  constructor(private fb: FormBuilder, private authService: AuthService){}
+ message:any;
+  constructor(private fb: FormBuilder, private authService: AuthService, private loginservice:LoginUserService, private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.signinForm = this.fb.group({
@@ -28,10 +29,20 @@ export class LoginUserComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
   }
   signOut(): void {
+    
     this.authService.signOut();
   }
-
+   saveuser()
+   {
+    let resp =this.loginservice.dosave(this.user.firstName,this.user.lastName,this.user.email);
+    resp.subscribe((data)=>this.message=data);
+    console.log(resp);
+    this._snackBar.open("Response:", "User credentials are not Added", {
+      duration: 2000,
+    });
+   }
   
 }

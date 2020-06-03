@@ -24,6 +24,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { SampleComponent } from './sample/sample.component';
+import {HttpClientModule} from '@angular/common/http';
+import { LoginUserService } from './login-user.service';
+import { OpportunityserviceService } from './opportunityservice.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const config = new AuthServiceConfig([
   {
@@ -44,11 +50,8 @@ export function provideConfig() {
     HomeComponent,
     UserhomeComponent,
     TrendstableComponent,
-   
-    
-    
-    
-    
+    SampleComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,9 @@ export function provideConfig() {
     MatAutocompleteModule,
     MatSortModule,
     MatSelectModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule,
+    MatDialogModule
 
     
     
@@ -80,9 +85,14 @@ export function provideConfig() {
   providers: [
     {
       provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
+      useFactory: provideConfig,
+      
+    },
+    LoginUserService,
+    OpportunityserviceService,
+    MatSnackBar
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[UserhomeComponent]
 })
 export class AppModule { }

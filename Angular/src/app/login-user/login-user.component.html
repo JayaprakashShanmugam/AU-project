@@ -21,15 +21,18 @@
         <div class="form-group">
           <label for="firstname">First Name:&nbsp;&nbsp;;</label>
 
-          <input type="text" class="form-control" id="firstname" [value]="user.firstName" readonly >
+          <input type="text" class="form-control" id="firstname" [(ngModel)]="user.firstName" [value]="user.firstName" readonly >
         </div>          <div class="form-group">
           <label for="lastname">Last Name:&nbsp;&nbsp;</label>
-          <input type="text" class="form-control" id="lastname" [value]="user.lastName" readonly >
+          <input type="text" class="form-control" id="lastname" [(ngModel)]="user.lastName" [value]="user.lastName" readonly >
         </div>          <div class="form-group">
           <label for="email2">Email:&nbsp;&nbsp;</label>
-          <input type="email" class="form-control" id="email2" [value]="user.email" readonly >
+          <input type="email" class="form-control" id="email2" [(ngModel)]="user.email" [value]="user.email" readonly >
         </div>
        <br>
         <button mat-raised-button color="primary" (click)="signOut()" class="btn btn-primary">Sign Out</button>      
-         </div>   
+         &nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="saveuser()" class="btn btn-primary">Save User</button>      
+            
+      </div>   
 </mat-card>

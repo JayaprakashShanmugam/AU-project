@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-     <span><a href="/">HOME</a></span>
+     <span><a href="/"> <img src="assets/img/accolite-logo.png" alt="MS-logo" width="180" height="70"></a></span>
      <span class="spacer"></span>
-     <button mat-button [matMenuTriggerFor]="menu">Trends</button>
+     <button mat-button [matMenuTriggerFor]="menu">Opportunity</button>
        <mat-menu #menu="matMenu">
-        <a  mat-button  routerLink="/createtrends">create trends</a><br>
-        <a  mat-button  routerLink="/viewtrends">view trends</a>
+        <a  mat-button  routerLink="/createtrends">create opportunity</a><br>
+        <a  mat-button  routerLink="/viewtrends">view opportunity</a>
       </mat-menu>
      <a  mat-button  routerLink="/login">User Account</a>
   </mat-toolbar-row>

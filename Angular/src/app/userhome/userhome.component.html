@@ -1,97 +1,73 @@
 <app-home></app-home>
 <mat-toolbar>
-  <span>Create Trends</span>
+  <span>Create Opportunity</span>
 </mat-toolbar>
 
-<mat-card>       
-  <mat-card-title>    
-      Details Needed for Trend Creation   
-  </mat-card-title>    
-  <mat-card-content>    
-      <form>    
-          <table>    
-              <tr>    
-                  <td>    
-                    <mat-form-field class="full-width">
+<mat-card>         
+  <mat-card-content>  
+                  <form>     
+                    <mat-form-field class="full-width" appearance="outline">
                       <mat-label>OpportunityId</mat-label>
-                      <input  matInput type="number" placeholder="OpportunityId"  name="OpportunityId"  required>
-                   </mat-form-field>   
-                  </td>        
-              </tr>    
-              <tr>    
-                  <td colspan="2">    
-                    <mat-form-field class="full-width">
+                      <input  matInput type="number"  placeholder="OpportunityId"  name="oid" [(ngModel)]=Opportunity.oid  required>
+                  </mat-form-field> 
+                    &nbsp;&nbsp;
+                  
+                    <mat-form-field class="full-width" appearance="outline">
                       <mat-label>OppurtunityDescription</mat-label>
-                      <input  matInput  placeholder="Description" name="Description"  required>
+                      <input  matInput  placeholder="Description" name="description" [(ngModel)]=Opportunity.description required>
                    </mat-form-field>    
-                  </td>    
-              </tr>    
-              
-              <tr>    
-                  <td>    
-         <mat-form-field class="full-width">
-          <mat-label>Location</mat-label>
-          <input  matInput  placeholder="Location" name="Location"  required>
-       </mat-form-field>     
-                  </td>    
-                     
-              </tr>    
-              <tr>    
-                  <td colspan="2">    
-                    <mat-form-field class="full-width">
+                   <br>
+                  <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Location</mat-label>
+                  <input  matInput  placeholder="Location" name="location" [(ngModel)]=Opportunity.location  required>
+                   </mat-form-field>     
+                   &nbsp;&nbsp;
+                    <mat-form-field class="full-width" appearance="outline">
                       <mat-label>Skills</mat-label>
-                      <input  matInput  placeholder="Skills"  name="Skills"  required>
+                      <input  matInput  placeholder="Skills"  name="skills" [(ngModel)]=Opportunity.skills required>
                    </mat-form-field> 
-                  </td>    
-              </tr>    
-              <tr>    
-                  <td colspan="2">    
-                    <mat-form-field class="full-width">
+                   <br>          
+                    <mat-form-field class="full-width" appearance="outline">
                       <mat-label>OpeningCount</mat-label>
-                      <input  matInput  placeholder="OpeningCount" name="OpeningCount"  required>
+                      <input  matInput type="number"  placeholder="OpeningCount" name="openingcount" [(ngModel)]=Opportunity.openingcount required>
                    </mat-form-field>
-                  </td>    
-              </tr>  
-              <tr>    
-                <td colspan="2">    
-                  <mat-form-field class="full-width">
+                   &nbsp;&nbsp;
+                  <mat-form-field class="full-width" appearance="outline">
                     <mat-label>ProjectDuration</mat-label>
-                    <input  matInput  placeholder="ProjectDuration in Days" name="ProjectDuration"  required>
+                    <input  matInput type="number" placeholder="ProjectDuration in Days" name="projectduration" [(ngModel)]=Opportunity.projectduration required>
                  </mat-form-field>
-                </td>    
-            </tr>  
-            <tr>    
-              <td colspan="2">    
-                <mat-form-field class="full-width">
+                  
+                 <br>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>LastDate</mat-label>
+                  <input  matInput  placeholder="LastDate" name="lastdate" [(ngModel)]=Opportunity.lastdate required>
+               </mat-form-field>
+               &nbsp;&nbsp;
+          
+                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Experience</mat-label>
-                  <input  matInput  placeholder="Experience" name="Experience"  required>
+                  <input  matInput  placeholder="Experience" name="experience"  [(ngModel)]=Opportunity.experience required>
                </mat-form-field> 
-              </td>    
-          </tr>  
-          <tr>    
-            <td colspan="2">    
-              <mat-form-field class="full-width">
+               <br>
+
+               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>ManagerName</mat-label>
-                <input  matInput  placeholder="ManagerName" name="ManagerName"  required>
+                <input  matInput  placeholder="ManagerName" name="managername"  [(ngModel)]=Opportunity.managername required>
+             </mat-form-field> 
+             &nbsp;&nbsp;
+             
+               <mat-form-field class="full-width" appearance="outline">
+                <mat-label>ManagerEmail</mat-label>
+                <input  matInput type="email"  [formControl]="email" placeholder="ManagerEmail" name="manageremail" [(ngModel)]=Opportunity.manageremail required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
-            </td>    
-        </tr>  
-        <tr>    
-          <td colspan="2">    
-            <mat-form-field class="full-width">
-              <mat-label>ManagerEmail</mat-label>
-              <input  matInput type="email"  placeholder="ManagerEmail" name="ManagerEmail"  required>
-            </mat-form-field> 
-          </td>    
-      </tr>  
-              <tr>    
-                  <td colspan="2" class="content-center">    
-                      <button mat-raised-button color="primary" (click)="onCreate()">Create</button> &nbsp;&nbsp;&nbsp;   
+            
+          
+         
+             
+            <br>     
+                      <button mat-raised-button color="primary" (click)="savenow()">Create</button> &nbsp;&nbsp;&nbsp;   
                       <button mat-raised-button color="primary" type="reset">Clear</button>    
-                  </td>    
-              </tr>    
-          </table>    
-      </form>    
-      
+            </form>
   </mat-card-content>    
 </mat-card> 
