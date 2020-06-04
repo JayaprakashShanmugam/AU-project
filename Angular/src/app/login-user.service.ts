@@ -9,9 +9,9 @@ export class LoginUserService {
  
   constructor(private http:HttpClient) { }
   
-  public dosave(firstname:string,lastname:string,email:string)
+  public dosaveuser(firstname:string,lastname:string,email:string)
   {
-     return this.http.get("http://localhost:8080/adduser/"+firstname+lastname+email)
+     return this.http.get("http://localhost:8080/adduser/"+firstname+"/"+lastname+"/"+email)
   }
 }
   

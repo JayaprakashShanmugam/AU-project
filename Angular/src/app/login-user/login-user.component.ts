@@ -25,15 +25,26 @@ export class LoginUserComponent implements OnInit {
       this.loggedIn = (user != null);
       console.log(this.user);
     });
+   
   }
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-
+    
   }
   signOut(): void {
     
     this.authService.signOut();
+  }
+
+  rememberuser() : void
+  {
+    let resp= this.loginservice.dosaveuser(this.user.firstName,this.user.lastName,this.user.email);
+    resp.subscribe((data)=>this.message=data);
+    console.log(resp);
+    this._snackBar.open("Response:", "User Added", {
+      duration: 2000,
+    }); 
   }
    
   
