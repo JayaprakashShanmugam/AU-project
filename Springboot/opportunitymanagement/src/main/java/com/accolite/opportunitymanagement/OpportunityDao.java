@@ -1,4 +1,4 @@
-package com.example.examplerest;
+package com.accolite.opportunitymanagment;
 
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class CustomerDao {
+public class OpportunityDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
@@ -24,39 +24,39 @@ public class CustomerDao {
 	private static final String SQL = "select * from opportunity;";
 	
 	
-	public List<Customer> getopportunities() {
+	public List<opportunity> getopportunities() {
 
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Opportunity> opportunities = new ArrayList<Opportunity>();
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(SQL);
 
         for (Map<String, Object> row : rows) 
         {
-             Customer customer = new Customer();
+             Opportunity opportunity = new Opportunity();
              
-             customer.setOid((Integer)row.get("oid"));
-             customer.setDescription((String)row.get("description"));
-             customer.setLocation((String)row.get("location"));
-             customer.setSkills((String)row.get("skills"));
-             customer.setOpeningcount((Integer)row.get("openingcount"));
-             customer.setProjectduration((Integer)row.get("projectduration"));
-             customer.setLastdate((String)row.get("lastdate"));
-             customer.setExperience((String)row.get("experience"));
-             customer.setManagername((String)row.get("managername"));
-             customer.setManageremail((String)row.get("manageremail"));
+             opportunity.setOid((Integer)row.get("oid"));
+             opportunity.setDescription((String)row.get("description"));
+             opportunity.setLocation((String)row.get("location"));
+             opportunity.setSkills((String)row.get("skills"));
+             opportunity.setOpeningcount((Integer)row.get("openingcount"));
+             opportunity.setProjectduration((Integer)row.get("projectduration"));
+             opportunity.setLastdate((String)row.get("lastdate"));
+             opportunity.setExperience((String)row.get("experience"));
+             opportunity.setManagername((String)row.get("managername"));
+             opportunity.setManageremail((String)row.get("manageremail"));
              
              
-             customers.add(customer);
+             Opportunities.add(opportunity);
          }
 
-       return customers;
+       return Opportunities;
    }
 	
 	
-	 public Customer getid(int id) {
+	 public Opportunity getid(int id) {
 	      String SQL = "select * from opportunity where oid = ?";
-	      Customer user = jdbcTemplate.queryForObject(
-	         SQL, new Object[]{id}, new CustomerRowMapper());
-	      
+	      Opportunity user = jdbcTemplate.queryForObject(
+	         SQL, new Object[]{id}, new opportunityRowMapper());
+	      // Rowmapper object will be called
 	      return user;
 	   }
 	

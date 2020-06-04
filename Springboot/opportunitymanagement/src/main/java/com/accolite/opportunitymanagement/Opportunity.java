@@ -1,8 +1,8 @@
-package com.example.examplerest;
+package com.accolite.opportunitymanagement;
 
 
 
-public class Customer {
+public class Opportunity {
 
 	 int oid;
      String description;
@@ -26,17 +26,17 @@ public class Customer {
     
 
 
-    public Customer() {
+    public Opportunity() {
     }
 
 
 
-	public Customer(int oid, String description, String location, String skills, int openingcount,
+	public Opportunity(int oid, String description, String location, String skills, int openingcount,
 			int projectduration, String lastdate, String experience, String managername, String manageremail) {
 	
 	}
 	
-	public Customer(String firstname,String lastname,String email ) {
+	public Opportunity(String firstname,String lastname,String email ) {
 		
 	}
 	

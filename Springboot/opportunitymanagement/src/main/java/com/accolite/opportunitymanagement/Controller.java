@@ -1,4 +1,4 @@
-package com.example.examplerest;
+package com.accolite.opportunitymanagement;
 
 
 
@@ -24,22 +24,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class controller {
 	
 	@Autowired
-    public CustomerDao dao; 
+    public OpportunityDao dao; 
 	
 	@CrossOrigin("*")
 	@GetMapping("/getoppurtunities")
-    public List<Customer> customerInformation() {
+    public List<Opportunity> OpportunityInformation() {
 	
-        List<Customer> customers = dao.getopportunities(); 
+        List<Opportunity> Opportunities = dao.getopportunities(); 
        
-        return customers;
+        return Opportunities;
     }
 	
 	
 
 	@RequestMapping("/getopportunityid")
     @ResponseBody
-    public Customer getid(@RequestParam("oid") int oid){
+    public Opportunity getid(@RequestParam("oid") int oid){
         return dao.getid(oid);
     }
 	
@@ -66,7 +66,7 @@ public class controller {
 	@CrossOrigin("*")
 	@PostMapping("/addopp")
     @ResponseBody
-    public String addopportunity(@RequestBody Customer opp){
+    public String addopportunity(@RequestBody Opportunity opp){
         dao.add(opp.oid,opp.description,opp.location,opp.skills,opp.openingcount,opp.projectduration,opp.lastdate,opp.experience,opp.managername,opp.manageremail);
         return "Opportunity created Successfully";
     }
