@@ -31,11 +31,11 @@ export class SampleComponent implements OnInit {
   }
   
 
-   updatenow(){
-    let resp =this.OpportunityServiceService.dosave(this.Opportunity);
+   updatenow(oid:number){
+    let resp =this.OpportunityServiceService.getbyid(oid);
     resp.subscribe((data)=>this.message=data);
     console.log(resp);
-    this._snackBar.open("Response:", "Opportunity Added Successfully", {
+    this._snackBar.open("Response:", "getting details", {
       duration: 2000,
     });
 

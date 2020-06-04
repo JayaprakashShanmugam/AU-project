@@ -9,3 +9,6 @@ table {
     width: 400px;
     height: 910px
 }
+.spacer {
+  flex: 1 1 auto;
+}

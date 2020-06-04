@@ -1,4 +1,4 @@
-package com.example.examplerest;
+package com.accolite.opportunitymanagement;
 
 
 import java.sql.ResultSet;
@@ -6,10 +6,11 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class CustomerRowMapper implements RowMapper<Customer> {
+public class OpportunityRowMapper implements RowMapper<Opportunity> {
 	
-	public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-	 Customer user = new Customer();
+	public Opportunity mapRow(ResultSet rs, int rowNum) throws SQLException {
+	 // used to get values by using opportunityid
+	 Opportunity user = new Opportunity();
 	  user.setOid(rs.getInt("oid"));
 	  user.setDescription(rs.getString("description"));
 	  user.setLocation(rs.getString("location"));

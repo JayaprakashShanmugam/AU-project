@@ -51,6 +51,7 @@ export function provideConfig() {
     UserhomeComponent,
     TrendstableComponent,
     SampleComponent,
+    
   
   ],
   imports: [

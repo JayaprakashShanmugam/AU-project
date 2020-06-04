@@ -8,11 +8,11 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>examplerest</artifactId>
+	<groupId>com.accolite</groupId>
+	<artifactId>opportunitymanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>examplerest</name>
-	<description>Demo project for Spring Boot</description>
+	<name>opportunitymanagement</name>
+	<description>Opportunity Management project using Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -23,7 +23,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+      <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+         </dependency>    
+	    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
