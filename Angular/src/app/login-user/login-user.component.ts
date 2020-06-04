@@ -35,14 +35,6 @@ export class LoginUserComponent implements OnInit {
     
     this.authService.signOut();
   }
-   saveuser()
-   {
-    let resp =this.loginservice.dosave(this.user.firstName,this.user.lastName,this.user.email);
-    resp.subscribe((data)=>this.message=data);
-    console.log(resp);
-    this._snackBar.open("Response:", "User credentials are not Added", {
-      duration: 2000,
-    });
-   }
+   
   
 }

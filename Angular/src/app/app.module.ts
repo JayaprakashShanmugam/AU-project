@@ -30,6 +30,7 @@ import { LoginUserService } from './login-user.service';
 import { OpportunityserviceService } from './opportunityservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {Router, RouterModule} from '@angular/router'
 
 const config = new AuthServiceConfig([
   {
@@ -77,7 +78,8 @@ export function provideConfig() {
     MatSelectModule,
     SocialLoginModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
 
     
     

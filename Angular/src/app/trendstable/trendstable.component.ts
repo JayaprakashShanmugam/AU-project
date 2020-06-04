@@ -10,6 +10,7 @@ import {MatDialogModule,MatDialog, MatDialogConfig} from '@angular/material/dial
 import { SampleComponent } from '../sample/sample.component';
 import { UserhomeComponent } from '../userhome/userhome.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-trendstable',
@@ -17,8 +18,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./trendstable.component.css']
 })
 export class TrendstableComponent implements OnInit {
-  
-  constructor(private OpportunityserviceService:OpportunityserviceService,private _snackBar: MatSnackBar,private dialog:MatDialog)
+   oidd:number;
+  constructor(private service:OpportunityserviceService,private _snackBar: MatSnackBar,private dialog:MatDialog,private router:Router)
   {}
   form : FormGroup = new FormGroup({
     oid: new FormControl(null),
@@ -47,7 +48,7 @@ export class TrendstableComponent implements OnInit {
 
   public deleteOpportunity(oid:number)
   {
-   let resp=this.OpportunityserviceService.deleteopportunity(oid);
+   let resp=this.service.deleteopportunity(oid);
    resp.subscribe((data)=>this.message=data);
    console.log(resp);
    this._snackBar.open("Response:", "Opportunity Deleted Successfully", {
@@ -58,7 +59,7 @@ export class TrendstableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.OpportunityserviceService.getopportunity().subscribe((data:any[])=>{
+    this.service.getopportunity().subscribe((data:any[])=>{
       this.dataSource.data=data;
       this.dataSource.paginator=this.paginator;
     })
@@ -68,17 +69,14 @@ export class TrendstableComponent implements OnInit {
   {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  onedit()
+  public getbyid(oid:number)
   {
-    const dialogconfig= new MatDialogConfig();
-    dialogconfig.disableClose=true;
-    dialogconfig.autoFocus=true;
-    dialogconfig.width="80%"; 
-    this.dialog.open(SampleComponent)
-    
+   this.service.Setid(oid);
+   this.router.navigateByUrl('/getid');
   }
 
+  
+   
 
   
 }

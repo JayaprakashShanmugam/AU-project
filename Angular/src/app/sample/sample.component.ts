@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginUserService } from '../login-user.service';
+import { Component, OnInit,Input } from '@angular/core';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -12,12 +12,23 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./sample.component.css']
 })
 export class SampleComponent implements OnInit {
+  
   Opportunity:Opportunity=new Opportunity(0,"","","",0,0,"","","","");
   message:any;
-  responsemessage:string;
-  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar) { }
-   
+  responsemessage:any;
+  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar,private router:Router) { }
+ 
+  oidd:number;
   ngOnInit(): void {
+    
+    this.oidd=this.OpportunityServiceService.Getid();
+    console.log(this.oidd);
+    let resp =this.OpportunityServiceService.getbyid(this.oidd);
+    resp.subscribe((data)=>this.message=data);
+    console.log(resp);
+    this._snackBar.open("Response:", "getting details", {
+      duration: 2000,
+    }); 
    
   }
  
@@ -31,16 +42,22 @@ export class SampleComponent implements OnInit {
   }
   
 
-   updatenow(oid:number){
-    let resp =this.OpportunityServiceService.getbyid(oid);
-    resp.subscribe((data)=>this.message=data);
-    console.log(resp);
-    this._snackBar.open("Response:", "getting details", {
-      duration: 2000,
-    });
+ updatenow()
+ {
+  let resp =this.OpportunityServiceService.updatebyid(this.message);
+  resp.subscribe((data)=>this.responsemessage=data);
+  console.log(resp);
+  this._snackBar.open("Response:", "Opportunity redefined Successfully", {
+    duration: 2000,
+  });
+  this.router.navigateByUrl('/viewtrends');
+ }
+
+
+   
 
   }
 
  
 
-}
+

@@ -1,3 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+     <span><a href="/"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
+     <span class="spacer"></span>
+        <a  mat-button  routerLink="/viewtrends">Opportunity</a>
+        <a  mat-button  routerLink="/login"><mat-icon>supervised_user_circle</mat-icon>User</a>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-toolbar>
     <span>Update Opportunity</span>
   </mat-toolbar>
@@ -5,60 +13,60 @@
   <mat-card>         
     <mat-card-content>  
                     <form>     
-                      <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                      <mat-form-field  class="full-width" appearance="outline">
                         <mat-label>OpportunityId</mat-label>
-                        <input  matInput type="number"  placeholder="OpportunityId"  name="oid" [(ngModel)]=Opportunity.oid  required>
+                        <input  matInput type="number"  placeholder="OpportunityId"  name="oid" [(ngModel)]=message.oid  required>
                         
                     </mat-form-field> 
                       &nbsp;&nbsp;
                     
-                      <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                      <mat-form-field  class="full-width" appearance="outline">
                         <mat-label>OppurtunityDescription</mat-label>
-                        <input  matInput  placeholder="Description" name="description" [(ngModel)]=Opportunity.description required>
+                        <input  matInput  placeholder="Description" name="description" [(ngModel)]=message.description required>
                      </mat-form-field>    
                      <br>
-                    <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                    <mat-form-field  class="full-width" appearance="outline">
                     <mat-label>Location</mat-label>
-                    <input  matInput  placeholder="Location" name="location" [(ngModel)]=Opportunity.location  required>
+                    <input  matInput  placeholder="Location" name="location" [(ngModel)]=message.location  required>
                      </mat-form-field>     
                      &nbsp;&nbsp;
-                      <mat-form-field  *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                      <mat-form-field   class="full-width" appearance="outline">
                         <mat-label>Skills</mat-label>
-                        <input  matInput  placeholder="Skills"  name="skills" [(ngModel)]=Opportunity.skills required>
+                        <input  matInput  placeholder="Skills"  name="skills" [(ngModel)]=message.skills required>
                      </mat-form-field> 
                      <br>          
-                      <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                      <mat-form-field  class="full-width" appearance="outline">
                         <mat-label>OpeningCount</mat-label>
-                        <input  matInput type="number"  placeholder="OpeningCount" name="openingcount" [(ngModel)]=Opportunity.openingcount required>
+                        <input  matInput type="number"  placeholder="OpeningCount" name="openingcount" [(ngModel)]=message.openingcount required>
                      </mat-form-field>
                      &nbsp;&nbsp;
-                    <mat-form-field  *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                    <mat-form-field   class="full-width" appearance="outline">
                       <mat-label>ProjectDuration</mat-label>
-                      <input  matInput type="number" placeholder="ProjectDuration in Days" name="projectduration" [(ngModel)]=Opportunity.projectduration required>
+                      <input  matInput type="number" placeholder="ProjectDuration in Days" name="projectduration" [(ngModel)]=message.projectduration required>
                    </mat-form-field>
                     
                    <br>
-                  <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                  <mat-form-field  class="full-width" appearance="outline">
                     <mat-label>LastDate</mat-label>
-                    <input  matInput  placeholder="LastDate" name="lastdate" [(ngModel)]=Opportunity.lastdate required>
+                    <input  matInput  placeholder="LastDate" name="lastdate" [(ngModel)]=message.lastdate required>
                  </mat-form-field>
                  &nbsp;&nbsp;
             
-                  <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                  <mat-form-field  class="full-width" appearance="outline">
                     <mat-label>Experience</mat-label>
-                    <input  matInput  placeholder="Experience" name="experience"  [(ngModel)]=Opportunity.experience required>
+                    <input  matInput  placeholder="Experience" name="experience"  [(ngModel)]=message.experience required>
                  </mat-form-field> 
                  <br>
   
-                 <mat-form-field *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                 <mat-form-field  class="full-width" appearance="outline">
                   <mat-label>ManagerName</mat-label>
-                  <input  matInput  placeholder="ManagerName" name="managername"  [(ngModel)]=Opportunity.managername required>
+                  <input  matInput  placeholder="ManagerName" name="managername"  [(ngModel)]=message.managername required>
                </mat-form-field> 
                &nbsp;&nbsp;
                
-                 <mat-form-field  *ngFor="let Opportunity of message" class="full-width" appearance="outline">
+                 <mat-form-field   class="full-width" appearance="outline">
                   <mat-label>ManagerEmail</mat-label>
-                  <input  matInput type="email"  [formControl]="email" placeholder="ManagerEmail" name="manageremail" [(ngModel)]=Opportunity.manageremail required>
+                  <input  matInput type="email"  [formControl]="email" placeholder="ManagerEmail" name="manageremail" [(ngModel)]=message.manageremail required>
                   <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
               
@@ -66,7 +74,7 @@
            
                
               <br>     
-                        <button mat-raised-button color="primary" (click)="updatenow(1)">Update</button> &nbsp;&nbsp;&nbsp;   
+                        <button mat-raised-button color="primary" (click)="updatenow()">Update</button> &nbsp;&nbsp;&nbsp;   
                         <button mat-raised-button color="primary" type="reset">Clear</button>    
               </form>
     </mat-card-content>    

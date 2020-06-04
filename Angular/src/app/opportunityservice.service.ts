@@ -9,7 +9,18 @@ import { HttpClient } from '@angular/common/http';
 export class OpportunityserviceService {
 
   constructor(private http:HttpClient ) { }
+  oid:number;
+ 
+ public Setid(oid:number):void
+ {
+    this.oid=oid;
+ }
 
+ public Getid():number
+  {
+    
+     return this.oid;
+  }
   
   public dosave(Opportunity)
   {
@@ -28,7 +39,11 @@ export class OpportunityserviceService {
 
   public getbyid(oid)
   {
-    return this.http.get("http://localhost:8080/getoppurtunityid/"+oid);
+    return this.http.get("http://localhost:8080/getopportunityid/"+oid);
+  }
+  public updatebyid(Opportunity)
+  {
+    return this.http.put("http://localhost:8080/updatebyid/",Opportunity,{responseType:'text' as 'json'})
   }
   
 }

@@ -1,8 +1,3 @@
-
-
-
-
-     
    <div *ngIf="loggedIn===false">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
@@ -12,14 +7,14 @@
             
             <a  mat-button  routerLink="/viewtrends">Opportunity</a>
          
-            <a  mat-button  routerLink="/login"><mat-icon>supervised_user_circle</mat-icon>User</a>
+         <a  mat-button  routerLink="/login">Login</a>
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-toolbar>
       No User found&nbsp;&nbsp;&nbsp; 
     </mat-toolbar>
     <mat-card>
-    <mat-card-content>Kindly Sign In</mat-card-content>
+    <mat-card-content>Kindly Sign In</mat-card-content> <br>
     <mat-icon>supervisor_account</mat-icon>   
         <form [formGroup]="signinForm">
         </form>

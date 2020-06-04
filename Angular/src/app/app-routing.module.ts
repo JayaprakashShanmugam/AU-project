@@ -20,8 +20,9 @@ const routes: Routes = [
     path : 'viewtrends',
     component: TrendstableComponent
   },
+  
   {
-    path : 'restapi',
+    path : 'getid',
     component: SampleComponent
   },
   {
