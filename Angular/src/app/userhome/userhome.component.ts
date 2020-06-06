@@ -3,7 +3,7 @@ import { Opportunity } from '../opportunity';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
-import {Router} from '@angular/router'
+
 
 
 @Component({
@@ -17,7 +17,7 @@ export class UserhomeComponent implements OnInit {
   message:any;
   responsemessage:string;
   
-  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar,private router:Router) { }
+  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar) { }
    
   ngOnInit(): void {
     
@@ -37,7 +37,7 @@ export class UserhomeComponent implements OnInit {
     this._snackBar.open("Response:", "Opportunity Added Successfully", {
       duration: 2000,
     });
-    this.router.navigateByUrl('/viewtrends');
+ 
 
   }
 

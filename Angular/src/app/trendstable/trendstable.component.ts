@@ -7,7 +7,7 @@ import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-trendstable',
@@ -16,8 +16,8 @@ import {Router} from '@angular/router'
 })
 
 export class TrendstableComponent implements OnInit {
-   oidd:number;
-  constructor(private service:OpportunityserviceService,private _snackBar: MatSnackBar,private dialog:MatDialog,private router:Router)
+  
+  constructor(private service:OpportunityserviceService,private _snackBar: MatSnackBar,private dialog:MatDialog)
   {}
   form : FormGroup = new FormGroup({
     oid: new FormControl(null),
@@ -71,7 +71,7 @@ export class TrendstableComponent implements OnInit {
   public getbyid(oid:number)
   {
    this.service.Setid(oid);
-   this.router.navigateByUrl('/getid');
+   
   }
 
   

@@ -3,7 +3,7 @@ import { OpportunityserviceService } from '../opportunityservice.service';
 import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
-import {Router} from '@angular/router'
+
 
 
 @Component({
@@ -16,13 +16,12 @@ export class SampleComponent implements OnInit {
   Opportunity:Opportunity=new Opportunity(0,"","","",0,0,"","","","");
   message:any;
   responsemessage:any;
-  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar,private router:Router) { }
+  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar) { }
  
   oidd:number;
   ngOnInit(): void {
     
     this.oidd=this.OpportunityServiceService.Getid();
-    console.log(this.oidd);
     let resp =this.OpportunityServiceService.getbyid(this.oidd);
     resp.subscribe((data)=>this.message=data);
     console.log(resp);
@@ -31,14 +30,22 @@ export class SampleComponent implements OnInit {
     }); 
    
   }
- 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  oid = new FormControl(0, [Validators.required]);
+  description = new FormControl('', [Validators.required]);
+  location = new FormControl('', [Validators.required]);
+  skills = new FormControl('', [Validators.required]);
+  openingcount = new FormControl(0, [Validators.required]);
+  projectduration = new FormControl(0, [Validators.required]);
+  lastdate = new FormControl('', [Validators.required]);
+  experience = new FormControl('', [Validators.required]);
+  managername = new FormControl('', [Validators.required]);
+  manageremail = new FormControl('', [Validators.required, Validators.email]);
  
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.manageremail.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.manageremail.hasError('email') ? 'Not a valid email' : '';
   }
   
 
@@ -50,7 +57,7 @@ export class SampleComponent implements OnInit {
   this._snackBar.open("Response:", "Opportunity redefined Successfully", {
     duration: 2000,
   });
-  this.router.navigateByUrl('/viewtrends');
+  
   
  }
 

@@ -1,15 +1,15 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-     <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
-     <span class="spacer"></span>
-     
-        
-        <a  mat-button  routerLink="/viewtrends">Opportunity</a>
-     
-  </mat-toolbar-row>
-</mat-toolbar>
+
   <div *ngIf="loggedIn===false">
-    
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+         <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
+         <span class="spacer"></span>
+         
+            
+            <a  mat-button  routerLink="/viewtrends">Opportunity</a>
+         
+      </mat-toolbar-row>
+    </mat-toolbar>
     <div class="main-div">
       <mat-card>
         <mat-card-title><span>Welcome to the Opportunity Management Portal</span></mat-card-title><br><br>

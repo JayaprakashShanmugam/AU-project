@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { OpportunityserviceService } from '../opportunityservice.service';
 import { UserhomeComponent } from './userhome.component';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 
 describe('UserhomeComponent', () => {
   let component: UserhomeComponent;
@@ -8,7 +12,9 @@ describe('UserhomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserhomeComponent ]
+      declarations: [ UserhomeComponent ],
+      imports:[MatSnackBarModule,HttpClientTestingModule],
+      providers:[OpportunityserviceService,MatSnackBar]
     })
     .compileComponents();
   }));

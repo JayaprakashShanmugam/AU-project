@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SampleComponent } from './sample.component';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { OpportunityserviceService } from '../opportunityservice.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserTestingModule } from '@angular/platform-browser/testing';
 
 describe('SampleComponent', () => {
   let component: SampleComponent;
@@ -8,7 +12,9 @@ describe('SampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SampleComponent ]
+      imports:[HttpClientTestingModule,MatSnackBarModule,BrowserTestingModule,BrowserAnimationsModule],
+      declarations: [ SampleComponent ],
+      providers:[OpportunityserviceService,MatSnackBar]
     })
     .compileComponents();
   }));
@@ -22,4 +28,5 @@ describe('SampleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

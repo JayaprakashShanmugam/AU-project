@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Opportunity } from './opportunity';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class OpportunityserviceService {
 
   constructor(private http:HttpClient ) { }
-  oid:number;
+  oid:number=0;
  
  
  public Setid(oid:number):void

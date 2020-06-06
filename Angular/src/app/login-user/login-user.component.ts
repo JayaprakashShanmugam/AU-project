@@ -16,7 +16,9 @@ export class LoginUserComponent implements OnInit {
  message:any;
   constructor(private fb: FormBuilder, private authService: AuthService, private loginservice:LoginUserService, private _snackBar: MatSnackBar){}
 
+
   ngOnInit(): void {
+    
     this.signinForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,6 +29,7 @@ export class LoginUserComponent implements OnInit {
     });
    
   }
+
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
