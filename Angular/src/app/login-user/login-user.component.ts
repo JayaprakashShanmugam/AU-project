@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { LoginUserService } from '../login-user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Login } from '../login';
+
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
@@ -23,7 +23,7 @@ export class LoginUserComponent implements OnInit {
     });    this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-      console.log(this.user);
+      
     });
    
   }
@@ -42,7 +42,7 @@ export class LoginUserComponent implements OnInit {
     let resp= this.loginservice.dosaveuser(this.user.firstName,this.user.lastName,this.user.email);
     resp.subscribe((data)=>this.message=data);
     console.log(resp);
-    this._snackBar.open("Response:", "User Added", {
+    this._snackBar.open("Response:","Synced with Server", {
       duration: 2000,
     }); 
   }

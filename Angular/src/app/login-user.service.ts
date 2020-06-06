@@ -11,7 +11,9 @@ export class LoginUserService {
   
   public dosaveuser(firstname:string,lastname:string,email:string)
   {
-     return this.http.get("http://localhost:8080/adduser/"+firstname+"/"+lastname+"/"+email)
+     return this.http.get("http://localhost:8080/adduser/"+firstname+"/"+lastname+"/"+email);
   }
 }
+
+
   

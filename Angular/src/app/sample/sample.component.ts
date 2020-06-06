@@ -51,6 +51,7 @@ export class SampleComponent implements OnInit {
     duration: 2000,
   });
   this.router.navigateByUrl('/viewtrends');
+  
  }
 
 

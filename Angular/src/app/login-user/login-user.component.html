@@ -1,27 +1,27 @@
-   <div *ngIf="loggedIn===false">
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-         <span><a href="/"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
-         <span class="spacer"></span>
-         
-            
-            <a  mat-button  routerLink="/viewtrends">Opportunity</a>
-         
-         <a  mat-button  routerLink="/login">Login</a>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <mat-toolbar>
-      No User found&nbsp;&nbsp;&nbsp; 
-    </mat-toolbar>
-    <mat-card>
-    <mat-card-content>Kindly Sign In</mat-card-content> <br>
-    <mat-icon>supervisor_account</mat-icon>   
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+     <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
+     <span class="spacer"></span>
+     
+        
+        <a  mat-button  routerLink="/viewtrends">Opportunity</a>
+     
+  </mat-toolbar-row>
+</mat-toolbar>
+  <div *ngIf="loggedIn===false">
+    
+    <div class="main-div">
+      <mat-card>
+        <mat-card-title><span>Welcome to the Opportunity Management Portal</span></mat-card-title><br><br>
+        <mat-card-content><span>Kindly Signin</span> </mat-card-content>
+        <mat-icon>supervisor_account</mat-icon>   
         <form [formGroup]="signinForm">
         </form>
         <div>
           <button mat-raised-button color="primary" (click)="signInWithGoogle()" class="btn btn-primary">Sign In With Google+</button>
         </div>
-       </mat-card> 
+      </mat-card>
+      </div>  
       </div> 
       <div *ngIf="loggedIn===true">
         <mat-toolbar color="primary">

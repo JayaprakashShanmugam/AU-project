@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginUserComponent } from './login-user/login-user.component';
-import { HomeComponent } from './home/home.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
@@ -30,7 +29,7 @@ import { LoginUserService } from './login-user.service';
 import { OpportunityserviceService } from './opportunityservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-import {Router, RouterModule} from '@angular/router'
+import {RouterModule} from '@angular/router'
 
 const config = new AuthServiceConfig([
   {
@@ -48,10 +47,9 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     LoginUserComponent,
-    HomeComponent,
     UserhomeComponent,
     TrendstableComponent,
-    SampleComponent,
+    SampleComponent
     
   
   ],
@@ -80,10 +78,6 @@ export function provideConfig() {
     HttpClientModule,
     MatDialogModule,
     RouterModule
-
-    
-    
-    
   ],
   providers: [
     {

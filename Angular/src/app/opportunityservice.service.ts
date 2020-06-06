@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +9,7 @@ export class OpportunityserviceService {
 
   constructor(private http:HttpClient ) { }
   oid:number;
+ 
  
  public Setid(oid:number):void
  {

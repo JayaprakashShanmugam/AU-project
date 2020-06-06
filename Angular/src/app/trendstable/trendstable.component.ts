@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ViewChild } from '@angular/core'
-import {MatTable} from '@angular/material/table';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatDialogModule,MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { SampleComponent } from '../sample/sample.component';
-import { UserhomeComponent } from '../userhome/userhome.component';
+import {MatDialog} from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Router} from '@angular/router'
 
@@ -17,6 +14,7 @@ import {Router} from '@angular/router'
   templateUrl: './trendstable.component.html',
   styleUrls: ['./trendstable.component.css']
 })
+
 export class TrendstableComponent implements OnInit {
    oidd:number;
   constructor(private service:OpportunityserviceService,private _snackBar: MatSnackBar,private dialog:MatDialog,private router:Router)
@@ -45,7 +43,7 @@ export class TrendstableComponent implements OnInit {
   dataSource = new MatTableDataSource<Opportunity>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+ 
   public deleteOpportunity(oid:number)
   {
    let resp=this.service.deleteopportunity(oid);
@@ -58,13 +56,14 @@ export class TrendstableComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.dataSource.paginator = this.paginator;
     this.service.getopportunity().subscribe((data:any[])=>{
       this.dataSource.data=data;
       this.dataSource.paginator=this.paginator;
     })
   }
-
+ 
   applyFilter(filterValue: string)
   {
     this.dataSource.filter = filterValue.trim().toLowerCase();

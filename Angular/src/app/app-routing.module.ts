@@ -1,6 +1,5 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { TrendstableComponent } from './trendstable/trendstable.component';
@@ -9,7 +8,7 @@ import { SampleComponent } from './sample/sample.component';
 
 const routes: Routes = [
   {
-   path:'login',
+   path:'home',
    component: LoginUserComponent
   },
   {
@@ -25,15 +24,12 @@ const routes: Routes = [
     path : 'getid',
     component: SampleComponent
   },
-  {
-    path : 'home',
-    component: HomeComponent
-  },
+ 
   
   
   {
     path : '',
-    redirectTo:'home',
+    redirectTo:'home ',
     pathMatch:'full'
   }
 ];
