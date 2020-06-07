@@ -50,8 +50,8 @@ public class OpportunityControllerTests {
 		       mockMvc.perform(get("/getopportunityid/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.oid").value("1")).andExpect(jsonPath("$.description").value("SoftwareEngineer"))
 				.andExpect(jsonPath("$.location").value("Chennai")).andExpect(jsonPath("$.skills").value("MongoDB"))
-				.andExpect(jsonPath("$.openingcount").value(15)).andExpect(jsonPath("$.projectduration").value(33))
-				.andExpect(jsonPath("$.lastdate").value("13-03-2019")).andExpect(jsonPath("$.experience").value("2 years"))
+				.andExpect(jsonPath("$.openingcount").value(15)).andExpect(jsonPath("$.projectduration").value(19))
+				.andExpect(jsonPath("$.lastdate").value("13-03-2019")).andExpect(jsonPath("$.experience").value("3 years"))
 				.andExpect(jsonPath("$.managername").value("vishnu")).andExpect(jsonPath("$.manageremail").value("paul@gmail.com"));
 				
 				
@@ -64,7 +64,7 @@ public class OpportunityControllerTests {
 	{
 		
 		Opportunity opp = new Opportunity();
-		opp.setOid(105);
+		opp.setOid(17);
 		opp.setDescription("AppDeveloper");
 		opp.setLocation("chennai");
 		opp.setSkills("Java");
@@ -89,7 +89,7 @@ public class OpportunityControllerTests {
 	
 	@Test
 	public void testdeleteOpportunity() throws Exception {
-	       mockMvc.perform(delete("/deleteopportunity/104").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+	       mockMvc.perform(delete("/deleteopportunity/450").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 			
 }
 	
@@ -127,7 +127,7 @@ public class OpportunityControllerTests {
 	public void getAllOpportunityTest()
 	{
 		
-	    assertEquals(6,opc.customerInformation().size());
+	    assertEquals(7,opc.customerInformation().size());
 	}
 	
 	

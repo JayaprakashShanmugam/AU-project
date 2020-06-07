@@ -57,14 +57,15 @@ public class OpportunityDao {
 	      String SQL = "select * from opportunity where oid = ?";
 	      Opportunity user = jdbcTemplate.queryForObject(
 	         SQL, new Object[]{id}, new OpportunityRowMapper());
-	      
 	      return user;
+	     
+	      
 	   }
 	 
 	
-	public void update(int oid, String description, String location, String skills, int openingcount,int projectduration,String lastdate, String experience, String managername, String manageremail){
+	public int update(int oid, String description, String location, String skills, int openingcount,int projectduration,String lastdate, String experience, String managername, String manageremail){
 	      String SQL = "update opportunity set description = ?, location=?, skills=?, openingcount=?, projectduration=?, lastdate=?, experience=?, managername=?, manageremail=? where oid = ?";
-	      jdbcTemplate.update(SQL,description,location,skills,openingcount,projectduration,lastdate,experience,managername,manageremail, oid);
+	      return jdbcTemplate.update(SQL,description,location,skills,openingcount,projectduration,lastdate,experience,managername,manageremail, oid);
 	      
 	   }
 	
