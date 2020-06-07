@@ -4,6 +4,7 @@ import { LoginUserComponent } from './login-user/login-user.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { TrendstableComponent } from './trendstable/trendstable.component';
 import { SampleComponent } from './sample/sample.component';
+import { TrendsComponent } from './trends/trends.component'
 
 
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
     path : 'viewtrends',
     component: TrendstableComponent
   },
+  {
+    path : 'trends',
+    component: TrendsComponent 
+  },
+
   
   {
     path : 'getid',

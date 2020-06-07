@@ -2,6 +2,7 @@
   <mat-toolbar-row>
      <span><a href="/"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
      <span class="spacer"></span>
+     <a  mat-button  routerLink="/trends">Trends</a>
         <a  mat-button  routerLink="/viewtrends">Opportunity</a>
         <a  mat-button  routerLink="/home">Logout</a>
   </mat-toolbar-row>
@@ -11,7 +12,7 @@
 </mat-toolbar>
 <mat-toolbar>
 <a  mat-raised-button color="primary"  routerLink="/createtrends">create_new+</a> &nbsp;&nbsp;
-<mat-icon>search</mat-icon> 
+ <mat-icon>search</mat-icon> 
  <mat-form-field class="example-full-width">
      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Opportunity" >   
  </mat-form-field>   

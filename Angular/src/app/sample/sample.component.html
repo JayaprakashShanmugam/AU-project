@@ -2,6 +2,7 @@
   <mat-toolbar-row>
      <span><a href="/"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
      <span class="spacer"></span>
+     <a  mat-button  routerLink="/trends">Trends</a>
         <a  mat-button  routerLink="/viewtrends">Opportunity</a>
         <a  mat-button  routerLink="/home">Logout</a>
   </mat-toolbar-row>
@@ -48,7 +49,7 @@
                    <br>
                   <mat-form-field  class="full-width" appearance="outline">
                     <mat-label>LastDate</mat-label>
-                    <input  matInput  placeholder="LastDate" [formControl]="lastdate name="lastdate" [(ngModel)]=message.lastdate required>
+                    <input  matInput  placeholder="LastDate" [formControl]="lastdate" name="lastdate" [(ngModel)]=message.lastdate required>
                  </mat-form-field>
                  &nbsp;&nbsp;
             
@@ -66,7 +67,7 @@
                
                  <mat-form-field   class="full-width" appearance="outline">
                   <mat-label>ManagerEmail</mat-label>
-                  <input  matInput type="email"  [formcontrol]="manageremail" placeholder="ManagerEmail" name="manageremail" [(ngModel)]=message.manageremail required>
+                  <input  matInput type="email" [formControl]="manageremail"  placeholder="ManagerEmail" name="manageremail" [(ngModel)]=message.manageremail required>
                   <mat-error *ngIf="manageremail.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
               

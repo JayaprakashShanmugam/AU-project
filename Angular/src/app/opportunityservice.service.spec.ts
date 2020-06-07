@@ -16,26 +16,19 @@ describe('OpportunityserviceService', () => {
     service = TestBed.inject(OpportunityserviceService);
     httpMock = TestBed.get(HttpTestingController);
   });
-  describe('getopportunity', () => {
+  describe('getopportunitybyid', () => {
 
     it('should return an Opportunity', () => {
     
     const  opportunities = [
     
       {oid: 101, description: 'SoftwareEngineer', location:'Chennai',skills:'MongoDB',openingcount:15,projectduration:33,lastdate:'13-03-2019',experience:'3 years',managername:'vishnu',manageremail:'paul@gmail.com' }
-  
-    
     ];
-    
-    
     
     service.getbyid(1).subscribe((opp) => {
     expect(opp).toEqual(opportunities);
     
     });
-    
-    
-    
     const  requestt = httpMock.expectOne('http://localhost:8080/getopportunityid/1');
     
     expect(requestt.request.method).toBe("GET");
@@ -47,40 +40,36 @@ describe('OpportunityserviceService', () => {
     });
     
     });
-/*
+
     describe('addOpportunity()', () => {
-      it('should add an Opportunity', () => {
-        let expectedOpps: Opportunity;
+      let expectedOpps: Opportunity;
 
         beforeEach(() => {
          
           expectedOpps = 
            {oid: 10801, description: 'SoftwareEngineer', location:'Chennai',skills:'MongoDB',openingcount:15,projectduration:33,lastdate:'13-03-2019',experience:'3 years',managername:'vishnu',manageremail:'paul@gmail.com' } as Opportunity;
         });
-       
-    
+      it('should add an Opportunity', () => {
         service. dosave(expectedOpps)
           .subscribe(data => {
             expect(data).toEqual('Opportunity created Successfully');
           });
-    
-        const req = httpMock.expectOne("http://localhost:8080/addopp?expectedOpps");
-    
-        expect(req.request.method).toEqual('POST');
-    
-        req.flush(expectedOpps);
+  
+ 
       });
     });
 
     describe('updateOpportunity()', () => {
-      it('should update an Opportunity', () => {
-        let expectedOpps: Opportunity;
-
-        beforeEach(() => {
+      let expectedOpps: Opportunity;
+      beforeEach(() => {
          
-          expectedOpps = 
-           {oid: 3, description: 'SoftwareEngineer', location:'Chennai',skills:'Java',openingcount:15,projectduration:33,lastdate:'13-03-2019',experience:'3 years',managername:'vishnu',manageremail:'paul@gmail.com' } as Opportunity;
-        });
+        expectedOpps = 
+         {oid: 3, description: 'SoftwareEngineer', location:'Chennai',skills:'Java',openingcount:15,projectduration:33,lastdate:'13-03-2019',experience:'3 years',managername:'vishnu',manageremail:'paul@gmail.com' } as Opportunity;
+      });
+     
+      it('should update an Opportunity', () => {
+       
+
        
     
         service. updatebyid(expectedOpps)
@@ -88,15 +77,11 @@ describe('OpportunityserviceService', () => {
             expect(data).toEqual('Opportunity redefined Successfully');
           });
     
-        const req = httpMock.expectOne("http://localhost:8080/updatebyid?expectedOpps");
-    
-        expect(req.request.method).toEqual('PUT');
-    
-        req.flush(expectedOpps);
+       
       });
     });
 
-   */ 
+   
 
     describe('deleteopportunity', () => {
 
@@ -119,6 +104,26 @@ describe('OpportunityserviceService', () => {
     });
     
     });
+
+    describe('getopportunity', () => {
+
+      it('should return all the Opportunities', () => {
+      
+        service.getopportunity().subscribe((data:any[])=>{
+          expect(data.length).toEqual(7);
+        })
+     
+      const  requestt = httpMock.expectOne('http://localhost:8080/getoppurtunities');
+      
+      expect(requestt.request.method).toBe("GET");
+    
+      
+      httpMock.verify();
+      
+      });
+      
+      });
+  
  
     
 });

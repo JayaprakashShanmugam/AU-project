@@ -24,13 +24,15 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { SampleComponent } from './sample/sample.component';
-import {HttpClientModule,HttpClient} from '@angular/common/http';
+import {HttpClientModule,HttpClient,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginUserService } from './login-user.service';
 import { OpportunityserviceService } from './opportunityservice.service';
 import {MatSnackBar,MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-import {RouterModule} from '@angular/router'
-
+import {RouterModule} from '@angular/router';
+import { TrendsComponent } from './trends/trends.component'
+import { ChartsModule } from 'ng2-charts';
+import { Tokeninterceptor } from './tokeninterceptor';
 
 const config = new AuthServiceConfig([
   {
@@ -50,7 +52,8 @@ export function provideConfig() {
     LoginUserComponent,
     UserhomeComponent,
     TrendstableComponent,
-    SampleComponent
+    SampleComponent,
+    TrendsComponent
     
   
   ],
@@ -79,7 +82,8 @@ export function provideConfig() {
     HttpClientModule,
     MatDialogModule,
     RouterModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ChartsModule
   ],
   providers: [
     {
@@ -90,7 +94,8 @@ export function provideConfig() {
     LoginUserService,
     OpportunityserviceService,
     MatSnackBar,
-    HttpClient
+    HttpClient,
+    { provide: HTTP_INTERCEPTORS, useClass: Tokeninterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents:[UserhomeComponent]

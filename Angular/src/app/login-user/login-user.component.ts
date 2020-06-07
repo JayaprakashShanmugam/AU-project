@@ -13,7 +13,7 @@ export class LoginUserComponent implements OnInit {
   signinForm: FormGroup;
   user: SocialUser;
   loggedIn: boolean;    
- message:any;
+  message:any;
   constructor(private fb: FormBuilder, private authService: AuthService, private loginservice:LoginUserService, private _snackBar: MatSnackBar){}
 
 
@@ -48,7 +48,14 @@ export class LoginUserComponent implements OnInit {
     this._snackBar.open("Response:","Synced with Server", {
       duration: 2000,
     }); 
+    this.gettokenid();
   }
+
+  gettokenid()
+  {
+    this.loginservice.settoken(this.user.id);
+  }
+  
    
   
 }
