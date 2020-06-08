@@ -38,7 +38,7 @@ public class OpportunityController {
 	boolean auth = true;
 	
 	@GetMapping("/getoppurtunities")
-    public List<Opportunity> customerInformation() {
+    public List<Opportunity> OpportunityInformation() {
 		if(auth) {
 			
 			logger.info("Getting Opportunity details");

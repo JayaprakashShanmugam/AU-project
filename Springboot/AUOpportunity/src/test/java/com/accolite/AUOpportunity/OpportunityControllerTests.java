@@ -66,7 +66,7 @@ public class OpportunityControllerTests {
 	{
 		
 		Opportunity opp = new Opportunity();
-		opp.setOid(1025);
+		opp.setOid(1029);
 		opp.setDescription("AppDeveloper");
 		opp.setLocation("chennai");
 		opp.setSkills("Java");
@@ -91,7 +91,7 @@ public class OpportunityControllerTests {
 	
 	@Test
 	public void testdeleteOpportunity() throws Exception {
-	       mockMvc.perform(delete("/deleteopportunity/1024").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+	       mockMvc.perform(delete("/deleteopportunity/1025").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 			
 }
 	
@@ -125,12 +125,21 @@ public class OpportunityControllerTests {
 	@Autowired
 	private OpportunityController opc;
 	
+
+	
+	@Test
+	public void ValidateUserTest()
+	{
+		
+	    assertEquals("Authenticated User",opc.ValidateUser("102430502860166805172","Jayaprakash","Shanmugam","jayaprakash.shanmugam@accoliteindia.com"));
+	}
+	
 	
 	@Test
 	public void getAllOpportunityTest()
 	{
 		
-	    assertEquals(6,opc.customerInformation().size());
+	    assertEquals(6,opc.OpportunityInformation().size());
 	}
 	
 	

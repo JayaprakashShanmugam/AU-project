@@ -25,15 +25,6 @@ describe('LoginUserService', () => {
     
     });
     
-    
-    
-    const  requestt = httpMock.expectOne('http://localhost:8080/adduser/Jayaprakash/shanmugam/test@accoliteindia.com');
-    
-    expect(requestt.request.method).toBe("GET");
-  
-    
-    httpMock.verify();
-    
     });
     
     });

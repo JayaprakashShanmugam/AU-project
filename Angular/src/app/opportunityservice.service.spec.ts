@@ -54,7 +54,6 @@ describe('OpportunityserviceService', () => {
           .subscribe(data => {
             expect(data).toEqual('Opportunity created Successfully');
           });
-  
  
       });
     });
