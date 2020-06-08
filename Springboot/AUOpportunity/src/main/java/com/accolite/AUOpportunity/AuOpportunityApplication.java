@@ -15,7 +15,7 @@ public class AuOpportunityApplication {
 		SpringApplication.run(AuOpportunityApplication.class, args);
 	}
 	
-	/*@Value("${app.allowed-origins}")
+	@Value("app.allowed-origins")
     private String[] allowedOrigins;
     
     @Bean
@@ -26,5 +26,5 @@ public class AuOpportunityApplication {
 			}
 		};
 	}
-*/
+
 }

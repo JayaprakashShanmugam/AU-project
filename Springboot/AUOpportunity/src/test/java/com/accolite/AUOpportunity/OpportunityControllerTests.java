@@ -52,11 +52,13 @@ public class OpportunityControllerTests {
 				.andExpect(jsonPath("$.location").value("Chennai")).andExpect(jsonPath("$.skills").value("MongoDB"))
 				.andExpect(jsonPath("$.openingcount").value(15)).andExpect(jsonPath("$.projectduration").value(19))
 				.andExpect(jsonPath("$.lastdate").value("13-03-2019")).andExpect(jsonPath("$.experience").value("3 years"))
-				.andExpect(jsonPath("$.managername").value("vishnu")).andExpect(jsonPath("$.manageremail").value("paul@gmail.com"));
+				.andExpect(jsonPath("$.managername").value("vishnu")).andExpect(jsonPath("$.manageremail").value("raul@gmail.com"));
 				
 				
 
 	}
+
+
 	
 
 	@Test
@@ -64,7 +66,7 @@ public class OpportunityControllerTests {
 	{
 		
 		Opportunity opp = new Opportunity();
-		opp.setOid(17);
+		opp.setOid(1025);
 		opp.setDescription("AppDeveloper");
 		opp.setLocation("chennai");
 		opp.setSkills("Java");
@@ -89,9 +91,10 @@ public class OpportunityControllerTests {
 	
 	@Test
 	public void testdeleteOpportunity() throws Exception {
-	       mockMvc.perform(delete("/deleteopportunity/450").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+	       mockMvc.perform(delete("/deleteopportunity/1024").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 			
 }
+	
 	
 	@Test
 	public void UpdateOpportunityTest() throws Exception
@@ -101,7 +104,7 @@ public class OpportunityControllerTests {
 		opp.setOid(2);
 		opp.setDescription("AppDeveloper");
 		opp.setLocation("chennai");
-		opp.setSkills("Java");
+		opp.setSkills("Software Developer");
 		opp.setOpeningcount(2);
 		opp.setProjectduration(12);
 		opp.setLastdate("13-03-2020");
@@ -127,7 +130,7 @@ public class OpportunityControllerTests {
 	public void getAllOpportunityTest()
 	{
 		
-	    assertEquals(7,opc.customerInformation().size());
+	    assertEquals(6,opc.customerInformation().size());
 	}
 	
 	

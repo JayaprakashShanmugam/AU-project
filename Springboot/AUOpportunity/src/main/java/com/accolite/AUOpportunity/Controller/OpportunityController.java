@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +26,6 @@ import org.slf4j.LoggerFactory;
 
 
 
-@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class OpportunityController {
 	
@@ -37,11 +35,12 @@ public class OpportunityController {
 	@Autowired
     public OpportunityDao dao; 
 	
-	boolean auth = false;
+	boolean auth = true;
 	
 	@GetMapping("/getoppurtunities")
     public List<Opportunity> customerInformation() {
 		if(auth) {
+			
 			logger.info("Getting Opportunity details");
 	        List<Opportunity> opportunities = dao.getopportunities(); 
 	       
