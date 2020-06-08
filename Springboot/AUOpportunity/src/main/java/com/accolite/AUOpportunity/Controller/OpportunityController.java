@@ -1,6 +1,6 @@
 package com.accolite.AUOpportunity.Controller;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 
 
-@CrossOrigin("*")
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class OpportunityController {
 	
@@ -36,61 +37,86 @@ public class OpportunityController {
 	@Autowired
     public OpportunityDao dao; 
 	
+	boolean auth = false;
 	
 	@GetMapping("/getoppurtunities")
     public List<Opportunity> customerInformation() {
-		 logger.info("Getting Opportunity details");
-        List<Opportunity> opportunities = dao.getopportunities(); 
-       
-        return opportunities;
+		if(auth) {
+			logger.info("Getting Opportunity details");
+	        List<Opportunity> opportunities = dao.getopportunities(); 
+	       
+	        return opportunities;
+		}
+		else
+		{
+			return null;
+		}
+		
     }
+	
 	
 	
 	
 	@GetMapping("/getopportunityid/{oid}")
 	@ResponseBody
     public Opportunity getid(@PathVariable int oid){
-		Opportunity getbyid; 
-		try {
+		if(auth) {
+			Opportunity getbyid; 
+			try {
+				
+			getbyid = dao.getid(oid);
+			}
+			catch(EmptyResultDataAccessException e)
+			{
+				throw new OpportunityServiceErrorException();
+			}
 			
-		getbyid = dao.getid(oid);
+			return getbyid;	
 		}
-		catch(EmptyResultDataAccessException e)
+		else
 		{
-			throw new OpportunityServiceErrorException();
+			return null;
 		}
-		
-		return getbyid;
-	
-		
-		
-		
-    }
+		    }
 	
 	
-	@GetMapping("/adduser/{firstname}/{lastname}/{email}")
+	@GetMapping("/validateuser/{firstname}/{lastname}/{email}")
     @ResponseBody
-    public String addUser(@PathVariable String firstname,@PathVariable String lastname,@PathVariable String email ){
-		    logger.info("Adding User details");
-        	
-		    dao.adduser(firstname,lastname,email,new Timestamp(System.currentTimeMillis()));
-            return "User Added Successfully";
+    public String ValidateUser(@RequestHeader("Authorization") String id,@PathVariable String firstname,@PathVariable String lastname,@PathVariable String email ){
+		    logger.info("Authenticating User details");
+        	if(dao.updateuser(id,firstname,lastname,email)>=1)
+        	{   
+        		auth=true;
+              return "Authenticated User";
+        	}
+        	else
+        	{   
+        		return "Non-Authenticated User";
+        	}
+		   
 
     }
-
 	
+		
 	
 	@PutMapping("/updatebyid")
 	@ResponseBody
 	 public String updateopportunity(@RequestBody Opportunity op){
-		if(dao.update(op.oid,op.description,op.location,op.skills,op.openingcount,op.projectduration,op.lastdate,op.experience,op.managername,op.manageremail)<1)
+		if(auth) {
+			if(dao.update(op.oid,op.description,op.location,op.skills,op.openingcount,op.projectduration,op.lastdate,op.experience,op.managername,op.manageremail)<1)
+			{
+				throw new OpportunityNotFoundException();
+			}
+			else {
+				logger.info("Updating Opportunity details");
+	        return "Opportunity redefined Successfully";
+			}
+		}
+		else
 		{
-			throw new OpportunityNotFoundException();
+			return "Non Authenticated User";
 		}
-		else {
-			logger.info("Updating Opportunity details");
-        return "Opportunity redefined Successfully";
-		}
+		
     }
 	
 	
@@ -99,16 +125,22 @@ public class OpportunityController {
 	@PostMapping("/addopp")
     @ResponseBody
     public String addopportunity(@RequestBody Opportunity opp){
-		
-		if( dao.add(opp.oid,opp.description,opp.location,opp.skills,opp.openingcount,opp.projectduration,opp.lastdate,opp.experience,opp.managername,opp.manageremail)<1)
+		if(auth) {
+			if( dao.add(opp.oid,opp.description,opp.location,opp.skills,opp.openingcount,opp.projectduration,opp.lastdate,opp.experience,opp.managername,opp.manageremail)<1)
+			{
+				throw new OpportunityNotFoundException();
+			}
+			else {
+				logger.info("Adding Opportunity details");
+				 return "Opportunity created Successfully";	
+			}
+	       
+		}
+		else
 		{
-			throw new OpportunityNotFoundException();
+			return "Non Authenticated User";
 		}
-		else {
-			logger.info("Adding Opportunity details");
-			 return "Opportunity created Successfully";	
-		}
-       
+		
     }
 	
 	
@@ -117,12 +149,19 @@ public class OpportunityController {
 	@DeleteMapping("/deleteopportunity/{oid}")
     @ResponseBody
     public String deleteopportunity(@PathVariable int oid){
-        if(dao.delete(oid)< 1){
-        	throw new OpportunityNotFoundException();
-        }else{
-        	logger.info("Deleting Opportunity details");
-        	return "Opportunity Deleted Successfully";
+        if(auth) {
+        	if(dao.delete(oid)< 1){
+            	throw new OpportunityNotFoundException();
+            }else{
+            	logger.info("Deleting Opportunity details");
+            	return "Opportunity Deleted Successfully";
+            }
         }
+        else
+        {
+        	return "Non Authenticated User";
+        }
+		
     }
 	 
 }

@@ -18,13 +18,25 @@ public class Opportunity {
      public String firstname;
      public String lastname;
      public String email;
-     
+     public String id;
     
      
     
 
 
-    public Opportunity() {
+    public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+	public Opportunity() {
     }
 
 
@@ -34,7 +46,7 @@ public class Opportunity {
 	
 	}
 	
-	public Opportunity(String firstname,String lastname,String email ) {
+	public Opportunity(String id,String firstname,String lastname,String email ) {
 		
 	}
 	

@@ -4,8 +4,8 @@
       <mat-toolbar-row>
          <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
          <span class="spacer"></span>
-         <a  mat-button  routerLink="/trends">Trends</a>
-            <a  mat-button  routerLink="/viewtrends">Opportunity</a>
+         <a  mat-button color="warn" routerLink="/trends">Trends</a>
+            <a  mat-button color="warn" routerLink="/viewtrends">Opportunity</a>
           
       </mat-toolbar-row>
     </mat-toolbar>
@@ -25,11 +25,11 @@
       <div *ngIf="loggedIn===true">
         <mat-toolbar color="primary">
           <mat-toolbar-row>
-             <span><a href="/"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
+             <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
              <span class="spacer"></span>
-             <a  mat-button  routerLink="/trends">Trends</a>
-                <a  mat-button  routerLink="/viewtrends">Opportunity</a>
-             <button  mat-button  (click)="signOut()">Logout</button>
+             <a  mat-button color="warn" routerLink="/trends">Trends</a>
+                <a  mat-button color="warn" routerLink="/viewtrends">Opportunity</a>
+             <button  mat-button  color="warn" (click)="signOut()">Logout</button>
           </mat-toolbar-row>
         </mat-toolbar>
         <mat-toolbar>

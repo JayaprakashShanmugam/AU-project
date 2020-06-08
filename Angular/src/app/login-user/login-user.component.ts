@@ -15,8 +15,7 @@ export class LoginUserComponent implements OnInit {
   loggedIn: boolean;    
   message:any;
   constructor(private fb: FormBuilder, private authService: AuthService, private loginservice:LoginUserService, private _snackBar: MatSnackBar){}
-
-
+  
   ngOnInit(): void {
     
     this.signinForm = this.fb.group({
@@ -27,10 +26,10 @@ export class LoginUserComponent implements OnInit {
       this.loggedIn = (user != null);
       
     });
-   
+    
   }
 
-
+  
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     
@@ -38,24 +37,25 @@ export class LoginUserComponent implements OnInit {
   signOut(): void {
     
     this.authService.signOut();
+    localStorage.removeItem('idtoken');
   }
 
   rememberuser() : void
   {
+    
+    localStorage.setItem('idtoken',this.user.id);
+    console.log("your google id was:"+this.user.id)
+    console.log(this.user.id);
     let resp= this.loginservice.dosaveuser(this.user.firstName,this.user.lastName,this.user.email);
     resp.subscribe((data)=>this.message=data);
-    console.log(resp);
     this._snackBar.open("Response:","Synced with Server", {
       duration: 2000,
     }); 
-    this.gettokenid();
+    
   }
 
-  gettokenid()
-  {
-    this.loginservice.settoken(this.user.id);
-  }
   
+   
    
   
 }

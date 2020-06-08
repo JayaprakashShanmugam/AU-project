@@ -1,5 +1,5 @@
 package com.accolite.AUOpportunity.repository;
-import java.sql.Timestamp;
+
 import java.util.ArrayList;
 
 import java.util.List;
@@ -63,18 +63,24 @@ public class OpportunityDao {
 	   }
 	 
 	
+	 
+	
 	public int update(int oid, String description, String location, String skills, int openingcount,int projectduration,String lastdate, String experience, String managername, String manageremail){
 	      String SQL = "update opportunity set description = ?, location=?, skills=?, openingcount=?, projectduration=?, lastdate=?, experience=?, managername=?, manageremail=? where oid = ?";
 	      return jdbcTemplate.update(SQL,description,location,skills,openingcount,projectduration,lastdate,experience,managername,manageremail, oid);
 	      
 	   }
 	
-	public int adduser(String firstname,String lastname,String email,Timestamp time){
+	public int updateuser(String id,String firstname,String lastname,String email){
         
 		
-		String query = "insert into googleusers values(?,?,?,?);";
-        return jdbcTemplate.update(query,firstname,lastname,email,time);
+		String query = "update googleusers set firstname=?, lastname=?,email=? where id=?";
+        return jdbcTemplate.update(query,firstname,lastname,email,id);
     }
+	
+	
+	 
+ 
 
 	
 	

@@ -11,19 +11,13 @@ export class LoginUserService {
 
   constructor(private http:HttpClient) { }
   
-  clientid : string;
+  
   public dosaveuser(firstname:string,lastname:string,email:string)
   {
-     return this.http.get("http://localhost:8080/adduser/"+firstname+"/"+lastname+"/"+email);
+     return this.http.get("http://localhost:8080/validateuser/"+firstname+"/"+lastname+"/"+email);
   }
-  public gettoken() : string
-  {
-      return this.clientid;
-  }
-  public settoken(clientid:string) : void
-  {
-     this.clientid=clientid;
-  }
+ 
+ 
 
 }
 

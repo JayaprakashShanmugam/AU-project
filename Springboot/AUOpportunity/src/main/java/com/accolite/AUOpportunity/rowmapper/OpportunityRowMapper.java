@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.accolite.AUOpportunity.model.Opportunity;
-;
 
 public class OpportunityRowMapper implements RowMapper<Opportunity> {
 	
