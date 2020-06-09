@@ -4,15 +4,14 @@
       <mat-toolbar-row>
          <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
          <span class="spacer"></span>
-         <a  mat-button color="warn" routerLink="/trends">Trends</a>
-            <a  mat-button color="warn" routerLink="/viewtrends">Opportunity</a>
-          
       </mat-toolbar-row>
     </mat-toolbar>
+    
+      <div class="bgdiv">
     <div class="main-div">
-      <mat-card>
-        <mat-card-title><span>Welcome to the Opportunity Management Portal</span></mat-card-title><br><br>
-        <mat-card-content><span>Kindly Signin</span> </mat-card-content>
+        <mat-card>
+        <mat-card-title><span>Welcome to the Opportunity Management Portal - AU MS 20</span></mat-card-title><br><br>
+        <mat-card-content><span>Kindly Signin and be a part of AU MS 20</span> </mat-card-content>
         <mat-icon>supervisor_account</mat-icon>   
         <form [formGroup]="signinForm">
         </form>
@@ -21,15 +20,16 @@
         </div>
       </mat-card>
       </div>  
+      </div>
       </div> 
       <div *ngIf="loggedIn===true">
         <mat-toolbar color="primary">
           <mat-toolbar-row>
-             <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="MS-logo" width="180" height="70"></a></span>
+             <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="AU-logo" width="180" height="70"></a></span>
              <span class="spacer"></span>
-             <a  mat-button color="warn" routerLink="/trends">Trends</a>
-                <a  mat-button color="warn" routerLink="/viewtrends">Opportunity</a>
-             <button  mat-button  color="warn" (click)="signOut()">Logout</button>
+             <a  mat-button color="primary" routerLink="/trends">Trends</a>
+                <a  mat-button color="primary" routerLink="/viewtrends">Opportunity</a>
+             <button  mat-button  color="primary" (click)="signOut()">Logout</button>
           </mat-toolbar-row>
         </mat-toolbar>
         <mat-toolbar>
@@ -54,6 +54,5 @@
         <button  mat-raised-button  (click)="rememberuser()">Remember Me</button>
        <br>
        </mat-card>
-      </div> 
-     
+      </div>  
 

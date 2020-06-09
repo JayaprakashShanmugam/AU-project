@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Opportunity } from '../opportunity';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {FormControl, Validators} from '@angular/forms';
+import {FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 
 
 
@@ -12,16 +12,41 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./userhome.component.css']
 })
 export class UserhomeComponent implements OnInit {
-
+ 
   Opportunity:Opportunity=new Opportunity(0,"","","",0,0,"","","","");
   message:any;
   responsemessage:string;
-  
-  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar) { }
+  form: FormGroup;
+  constructor(private OpportunityServiceService: OpportunityserviceService,private _snackBar: MatSnackBar,private fb: FormBuilder) { }
    
   ngOnInit(): void {
-    
+    this.form = this.fb.group({
+      oid: ['', [
+        Validators.required]],
+      description: ['', [
+        Validators.required]],
+      location: ['', [
+        Validators.required]],
+      skills: ['', [
+        Validators.required]],
+      openingcount: ['', [
+        Validators.required]],
+      projectduration: ['', [
+        Validators.required]],
+      lastdate: ['', [
+        Validators.required]],
+      experience: ['', [
+        Validators.required]],
+      managername: ['', [
+        Validators.required]],
+      manageremail: ['', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern("[^ @]*@[^ @]*")]]
+
+    });
   }
+  
   email = new FormControl('', [Validators.required, Validators.email]);
  
   getErrorMessage() {
@@ -37,13 +62,8 @@ export class UserhomeComponent implements OnInit {
     this._snackBar.open("Response:", "Opportunity Added Successfully", {
       duration: 2000,
     });
- 
+  }
+    
 
   }
 
-  
-
-
-  
-  
-}

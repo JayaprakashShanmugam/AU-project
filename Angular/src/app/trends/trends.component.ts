@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { OpportunityserviceService } from '../opportunityservice.service';
 
 @Component({
   selector: 'app-trends',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TrendsComponent implements OnInit {
  
 
-  constructor() { }
+  constructor(private service : OpportunityserviceService) { }
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -22,8 +22,15 @@ export class TrendsComponent implements OnInit {
     {data: [65, 59, 80, 81, 56, 55, 40, 22, 55, 67], label: 'Opportunity A'},
     {data: [28, 48, 40, 19, 86, 27, 90, 43, 44, 56], label: 'Opportunity B'}
   ];
-
+  barChartDataLive:any = [
+    { 
+        data: []
+    }
+];
   ngOnInit(): void {
+    this.service.getopportunity().subscribe((data)=>{
+      this.barChartDataLive = data as any [];
+    })
   }
   
 }

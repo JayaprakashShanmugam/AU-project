@@ -17,11 +17,28 @@
     flex: 1 1 auto;
   }
   .main-div{
+   
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  .bgdiv{
+    background-image: url('https://i.ytimg.com/vi/L9dVB_cp79U/maxresdefault.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  
+  }
+  .mat-toolbar.mat-primary {
+    background: #95ddbc;
+
+  }
+ 
+  
+
+  
   
   
   
