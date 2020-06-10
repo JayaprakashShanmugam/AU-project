@@ -6,7 +6,6 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule,MatDialog} from '@angular/material/dialog';
 
 
-
 describe('TrendstableComponent', () => {
   let component: TrendstableComponent;
   let fixture: ComponentFixture<TrendstableComponent>;
@@ -29,4 +28,18 @@ describe('TrendstableComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should filter the dataSource', async(() => {
+
+    fixture.detectChanges();
+    component.applyFilter('Software');
+    expect(component.dataSource.filter).toBe('software');
+    expect(component.dataSource.filter.length).toBe(8);
+    component.applyFilter('App Developer');
+    expect(component.dataSource.filter).toBe('app developer');
+    expect(component.dataSource.filter.length).toBe(13);
+    component.applyFilter('Java');
+    expect(component.dataSource.filter).toBe('java');
+    expect(component.dataSource.filter.length).toBe(4);
+  }));
+
 });
