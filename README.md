@@ -89,6 +89,9 @@ Controller : Opportunity Controller
           2. Login : firstName,Lastname,email
           3. Interceptor : intercepts each http request and add a user token to each request header. 
 
-      
+       Testing:
+          1.Form testing : (FormsModule) expects te form to be empty during initialization and for checking the validation.
+          2.Filter testing : expects to give the filtered text and return that number of rows.
+          3.Services testing : Testing Opportunity (GET,PUT,POST,DELETE) and Login user services.
 
 
