@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import { TrendsComponent } from './trends.component';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('TrendsComponent', () => {
   let component: TrendsComponent;

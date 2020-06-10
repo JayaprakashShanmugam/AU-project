@@ -30,9 +30,7 @@ export class TrendstableComponent implements OnInit {
     experience: new FormControl('',Validators.required),
     managername: new FormControl('',Validators.required),
     manageremail: new FormControl('',Validators.required),
-    
-    
-    
+
   });
 
 
@@ -48,7 +46,6 @@ export class TrendstableComponent implements OnInit {
   {
    let resp=this.service.deleteopportunity(oid);
    resp.subscribe((data)=>this.message=data);
-   console.log(resp);
    this._snackBar.open("Response:", "Opportunity Deleted Successfully", {
      duration: 2000,
    });

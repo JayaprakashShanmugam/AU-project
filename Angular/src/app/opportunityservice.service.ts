@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Opportunity } from './opportunity';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -26,25 +27,25 @@ export class OpportunityserviceService {
   public dosave(Opportunity)
   {
     
-     return this.http.post("http://localhost:8080/addopp",Opportunity,{responseType:'text' as 'json'})
+     return this.http.post(environment.baseUrl+"addopp",Opportunity,{responseType:'text' as 'json'})
   }
   public getopportunity()
   {
-    return this.http.get("http://localhost:8080/getoppurtunities");
+    return this.http.get(environment.baseUrl+"getoppurtunities");
   }
 
   public deleteopportunity(oid)
   {
-    return this.http.delete("http://localhost:8080/deleteopportunity/"+oid);
+    return this.http.delete(environment.baseUrl+"deleteopportunity/"+oid);
   }
 
   public getbyid(oid)
   {
-    return this.http.get("http://localhost:8080/getopportunityid/"+oid);
+    return this.http.get(environment.baseUrl+"getopportunityid/"+oid);
   }
   public updatebyid(Opportunity)
   {
-    return this.http.put("http://localhost:8080/updatebyid/",Opportunity,{responseType:'text' as 'json'})
+    return this.http.put(environment.baseUrl+"updatebyid/",Opportunity,{responseType:'text' as 'json'})
   }
   
 }

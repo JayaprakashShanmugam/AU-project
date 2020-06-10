@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 
 
@@ -14,7 +15,7 @@ export class LoginUserService {
   
   public dosaveuser(firstname:string,lastname:string,email:string)
   {
-     return this.http.get("http://localhost:8080/validateuser/"+firstname+"/"+lastname+"/"+email);
+     return this.http.get(environment.baseUrl+"validateuser/"+firstname+"/"+lastname+"/"+email);
   }
  
  

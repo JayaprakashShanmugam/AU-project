@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import { TrendstableComponent } from './trendstable.component';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule,MatDialog} from '@angular/material/dialog';
 

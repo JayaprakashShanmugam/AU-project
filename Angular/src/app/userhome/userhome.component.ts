@@ -58,7 +58,6 @@ export class UserhomeComponent implements OnInit {
   public savenow(){
     let resp =this.OpportunityServiceService.dosave(this.Opportunity);
     resp.subscribe((data)=>this.message=data);
-    console.log(resp);
     this._snackBar.open("Response:", "Opportunity Added Successfully", {
       duration: 2000,
     });

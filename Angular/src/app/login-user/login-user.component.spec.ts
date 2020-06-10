@@ -3,7 +3,7 @@ import { LoginUserComponent } from './login-user.component';
 import { AuthServiceConfig, GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { FormsModule, ReactiveFormsModule ,FormBuilder} from '@angular/forms';
 import {MatSnackBar,MatSnackBarModule} from '@angular/material/snack-bar';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 
 const config = new AuthServiceConfig([

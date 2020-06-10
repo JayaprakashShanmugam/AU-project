@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { OpportunityserviceService } from '../opportunityservice.service';
 import { Opportunity } from '../opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -24,7 +24,6 @@ export class SampleComponent implements OnInit {
     this.oidd=this.OpportunityServiceService.Getid();
     let resp =this.OpportunityServiceService.getbyid(this.oidd);
     resp.subscribe((data)=>this.message=data);
-    console.log(resp);
     this._snackBar.open("Response:", "getting details", {
       duration: 2000,
     }); 
@@ -53,7 +52,6 @@ export class SampleComponent implements OnInit {
  {
   let resp =this.OpportunityServiceService.updatebyid(this.message);
   resp.subscribe((data)=>this.responsemessage=data);
-  console.log(resp);
   this._snackBar.open("Response:", "Opportunity redefined Successfully", {
     duration: 2000,
   });
