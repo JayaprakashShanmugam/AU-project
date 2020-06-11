@@ -37,7 +37,25 @@ public class OpportunityControllerTests {
 	private WebApplicationContext webApplicationContext;
 	
 	ObjectMapper om = new ObjectMapper();
-
+	
+	Opportunity opp = new Opportunity();
+	
+	public Opportunity getOpportunityforTest()
+	{
+		opp.setOid(6);
+		opp.setDescription("AppDeveloper");
+		opp.setLocation("chennai");
+		opp.setSkills("Java");
+		opp.setOpeningcount(2);
+		opp.setProjectduration(12);
+		opp.setLastdate("13-03-2020");
+		opp.setExperience("2years");
+		opp.setManagername("kumar");
+		opp.setManageremail("kumaravel@gmail.com");	
+		return opp;
+	}
+	
+	
 	@Before
 	public void setup() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -46,7 +64,7 @@ public class OpportunityControllerTests {
 	
 	
 	@Test
-	public void getOpportunityTest() throws Exception {
+	public void testgetOpportunity() throws Exception {
 		       mockMvc.perform(get("/getopportunityid/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.oid").value("1")).andExpect(jsonPath("$.description").value("SoftwareEngineer"))
 				.andExpect(jsonPath("$.location").value("Chennai")).andExpect(jsonPath("$.skills").value("MongoDB"))
@@ -64,21 +82,9 @@ public class OpportunityControllerTests {
 	@Test
 	public void addOpportunityTest() throws Exception
 	{
+		Opportunity optest = getOpportunityforTest();
 		
-		Opportunity opp = new Opportunity();
-		opp.setOid(1029);
-		opp.setDescription("AppDeveloper");
-		opp.setLocation("chennai");
-		opp.setSkills("Java");
-		opp.setOpeningcount(2);
-		opp.setProjectduration(12);
-		opp.setLastdate("13-03-2020");
-		opp.setExperience("2years");
-		opp.setManagername("kumar");
-		opp.setManageremail("kumaravel@gmail.com");
-		
-		
-      String jsonRequest = om.writeValueAsString(opp);
+      String jsonRequest = om.writeValueAsString(optest);
 		
 		
 	mockMvc.perform(post("/addopp").content(jsonRequest).contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk());
@@ -90,27 +96,19 @@ public class OpportunityControllerTests {
 
 	
 	@Test
-	public void deleteOpportunityTest() throws Exception {
-	       mockMvc.perform(delete("/deleteopportunity/1025").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+	public void testdeleteOpportunity() throws Exception {
+	       mockMvc.perform(delete("/deleteopportunity/6").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 			
 }
 	
 	
 	@Test
-	public void updateOpportunityTest() throws Exception
+	public void UpdateOpportunityTest() throws Exception
 	{
 		
-		Opportunity opp = new Opportunity();
+		Opportunity opp = getOpportunityforTest();
 		opp.setOid(2);
-		opp.setDescription("AppDeveloper");
-		opp.setLocation("chennai");
-		opp.setSkills("Software Developer");
-		opp.setOpeningcount(2);
-		opp.setProjectduration(12);
-		opp.setLastdate("13-03-2020");
-		opp.setExperience("2years");
-		opp.setManagername("kumar");
-		opp.setManageremail("kumaravel@gmail.com");
+	
 		
 		
       String jsonRequest = om.writeValueAsString(opp);
@@ -128,10 +126,10 @@ public class OpportunityControllerTests {
 
 	
 	@Test
-	public void validateUserTest()
+	public void ValidateUserTest()
 	{
 		
-	    assertEquals("Authenticated User",opc.validateUser("102430502860166805172","Jayaprakash","Shanmugam","jayaprakash.shanmugam@accoliteindia.com"));
+	    assertEquals("User Synced",opc.validateUser("102430502860166805172","Jayaprakash","Shanmugam","jayaprakash.shanmugam@accoliteindia.com"));
 	}
 	
 	
@@ -139,7 +137,7 @@ public class OpportunityControllerTests {
 	public void getAllOpportunityTest()
 	{
 		
-	    assertEquals(6,opc.opportunityInformation("testid","testemail").size());
+	    assertEquals(7,opc.opportunityInformation("102430502860166805172","jayaprakash.shanmugam@accoliteindia.com").size());
 	}
 	
 	
