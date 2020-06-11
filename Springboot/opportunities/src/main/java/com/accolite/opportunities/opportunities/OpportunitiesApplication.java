@@ -14,4 +14,15 @@ public class OpportunitiesApplication {
 		SpringApplication.run(OpportunitiesApplication.class, args);
 	}
 	
+	@Value("app.allowed-origins")
+    private String[] allowedOrigins;
+    
+    @Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins(allowedOrigins);
+			}
+		};
+	}
 }
