@@ -1,4 +1,5 @@
 package repositories;
+
 import java.util.ArrayList;
 
 import java.util.List;
@@ -11,8 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import entities.Opportunity;
 import rowmapper.OpportunityRowMapper;
-
-
 
 
 
@@ -54,7 +53,7 @@ public class OpportunityDao {
    }
 	
 	
-	 public Opportunity getId(int id) {
+	 public Opportunity getid(int id) {
 	      String SQL = "select * from opportunity where oid = ?";
 	      Opportunity user = jdbcTemplate.queryForObject(
 	         SQL, new Object[]{id}, new OpportunityRowMapper());
@@ -66,18 +65,24 @@ public class OpportunityDao {
 	
 	 
 	
-	public int update(int oid, String description, String location, String skills, int openingCount,int projectDuration,String lastDate, String experience, String managerName, String managerEmail){
+	public int update(int oid, String description, String location, String skills, int openingcount,int projectduration,String lastdate, String experience, String managername, String manageremail){
 	      String SQL = "update opportunity set description = ?, location=?, skills=?, openingcount=?, projectduration=?, lastdate=?, experience=?, managername=?, manageremail=? where oid = ?";
-	      return jdbcTemplate.update(SQL,description,location,skills,openingCount,projectDuration,lastDate,experience,managerName,managerEmail, oid);
+	      return jdbcTemplate.update(SQL,description,location,skills,openingcount,projectduration,lastdate,experience,managername,manageremail, oid);
 	      
 	   }
 	
-	public int updateUser(String id,String firstName,String lastName,String email){
+	public int updateuser(String id,String firstname,String lastname,String email){
         
 		
 		String query = "update googleusers set firstname=?, lastname=?,email=? where id=?";
-        return jdbcTemplate.update(query,firstName,lastName,email,id);
+        return jdbcTemplate.update(query,firstname,lastname,email,id);
     }
+	
+	public int validateRequest(String id,String email)
+	{
+		String query = "update google set email=? where id=?";
+        return jdbcTemplate.update(query,email,id);
+	}
 	
 	
 	 
@@ -85,9 +90,9 @@ public class OpportunityDao {
 
 	
 	
-	public int add(int oid, String description, String location, String skills, int openingCount,int projectDuration,String lastDate, String experience, String managerName, String managerEmail){
+	public int add(int oid, String description, String location, String skills, int openingcount,int projectduration,String lastdate, String experience, String managername, String manageremail){
         String query = "insert into opportunity values(?,?,?,?,?,?,?,?,?,?);";
-        return jdbcTemplate.update(query,oid,description,location,skills,openingCount,projectDuration,lastDate,experience,managerName,managerEmail);
+        return jdbcTemplate.update(query,oid,description,location,skills,openingcount,projectduration,lastdate,experience,managername,manageremail);
     }
 	
 	public int delete(int id){

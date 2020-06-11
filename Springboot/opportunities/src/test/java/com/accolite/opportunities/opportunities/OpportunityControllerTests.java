@@ -139,7 +139,7 @@ public class OpportunityControllerTests {
 	public void getAllOpportunityTest()
 	{
 		
-	    assertEquals(6,opc.opportunityInformation().size());
+	    assertEquals(6,opc.opportunityInformation("testid","testemail").size());
 	}
 	
 	

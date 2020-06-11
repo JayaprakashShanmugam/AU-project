@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import entities.Opportunity;
 import exception.OpportunityNotFoundException;
 import exception.OpportunityServiceErrorException;
+import entities.Opportunity;
 import repositories.OpportunityDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +35,10 @@ public class OpportunityController {
 	@Autowired
     public OpportunityDao dao; 
 	
-	boolean auth = true;
 	
 	@GetMapping("/getoppurtunities")
-    public List<Opportunity> opportunityInformation() {
-		if(auth) {
+    public List<Opportunity> opportunityInformation(@RequestHeader("authtoken") String id,@RequestHeader("authemail") String email) {
+		if(dao.validateRequest(id,email)>=1) {
 			
 			logger.info("Getting Opportunity details");
 	        List<Opportunity> opportunities = dao.getOpportunities(); 
@@ -58,19 +57,19 @@ public class OpportunityController {
 	
 	@GetMapping("/getopportunityid/{oid}")
 	@ResponseBody
-    public Opportunity getId(@PathVariable int oid){
-		if(auth) {
-			Opportunity getId; 
+    public Opportunity getId(@RequestHeader("authtoken") String id,@RequestHeader("authemail") String email,@PathVariable int oid){
+		if(dao.validateRequest(id,email)>=1) {
+			Opportunity getbyid; 
 			try {
 				
-			getId = dao.getId(oid);
+			getbyid = dao.getid(oid);
 			}
 			catch(EmptyResultDataAccessException e)
 			{
 				throw new OpportunityServiceErrorException();
 			}
 			
-			return getId;	
+			return getbyid;	
 		}
 		else
 		{
@@ -81,16 +80,16 @@ public class OpportunityController {
 	
 	@GetMapping("/validateuser/{firstname}/{lastname}/{email}")
     @ResponseBody
-    public String validateUser(@RequestHeader("Authorization") String id,@PathVariable String firstName,@PathVariable String lastName,@PathVariable String email ){
-		    logger.info("Authenticating User details");
-        	if(dao.updateUser(id,firstName,lastName,email)>=1)
+    public String validateUser(@RequestHeader("authtoken") String id,@PathVariable String firstname,@PathVariable String lastname,@PathVariable String email ){
+		    logger.info("Syncing User details");
+        	if(dao.updateuser(id,firstname,lastname,email)>=1)
         	{   
-        		auth=true;
-              return "Authenticated User";
+        		
+              return "User Synced";
         	}
         	else
         	{   
-        		return "Non-Authenticated User";
+        		return "User not Synced";
         	}
 		   
 
@@ -100,8 +99,8 @@ public class OpportunityController {
 	
 	@PutMapping("/updatebyid")
 	@ResponseBody
-	 public String updateOpportunity(@RequestBody Opportunity op){
-		if(auth) {
+	 public String updateOpportunity(@RequestHeader("authtoken") String id,@RequestHeader("authemail") String email,@RequestBody Opportunity op){
+		if(dao.validateRequest(id,email)>=1) {
 			if(dao.update(op.oid,op.description,op.location,op.skills,op.openingCount,op.projectDuration,op.lastDate,op.experience,op.managerName,op.managerEmail)<1)
 			{
 				throw new OpportunityNotFoundException();
@@ -123,8 +122,8 @@ public class OpportunityController {
 	
 	@PostMapping("/addopp")
     @ResponseBody
-    public String addOpportunity(@RequestBody Opportunity opp){
-		if(auth) {
+    public String addOpportunity(@RequestHeader("authtoken") String id,@RequestHeader("authemail") String email,@RequestBody Opportunity opp){
+		if(dao.validateRequest(id,email)>=1) {
 			if( dao.add(opp.oid,opp.description,opp.location,opp.skills,opp.openingCount,opp.projectDuration,opp.lastDate,opp.experience,opp.managerName,opp.managerEmail)<1)
 			{
 				throw new OpportunityNotFoundException();
@@ -147,8 +146,8 @@ public class OpportunityController {
 
 	@DeleteMapping("/deleteopportunity/{oid}")
     @ResponseBody
-    public String deleteOpportunity(@PathVariable int oid){
-        if(auth) {
+    public String deleteOpportunity(@RequestHeader("authtoken") String id,@RequestHeader("authemail") String email,@PathVariable int oid){
+        if(dao.validateRequest(id,email)>=1) {
         	if(dao.delete(oid)< 1){
             	throw new OpportunityNotFoundException();
             }else{

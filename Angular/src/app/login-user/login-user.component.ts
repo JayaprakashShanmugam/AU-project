@@ -39,12 +39,15 @@ export class LoginUserComponent implements OnInit {
     
     this.authService.signOut();
     localStorage.removeItem('idtoken');
+    localStorage.removeItem('useremail');
+    
   }
 
   rememberuser() : void
   {
     
     localStorage.setItem('idtoken',this.user.id);
+    localStorage.setItem('useremail',this.user.email);
     let resp= this.loginservice.dosaveuser(this.user.firstName,this.user.lastName,this.user.email);
     resp.subscribe((data)=>this.message=data);
     this._snackBar.open("Response:","Synced with Server", {
