@@ -1,5 +1,6 @@
 package repositories;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -71,11 +72,11 @@ public class OpportunityDao {
 	      
 	   }
 	
-	public int updateuser(String id,String firstname,String lastname,String email){
+    public int updateuser(String id,String firstname,String lastname,String email,Timestamp timestamp){
         
 		
-		String query = "update googleusers set firstname=?, lastname=?,email=? where id=?";
-        return jdbcTemplate.update(query,firstname,lastname,email,id);
+		String query = "insert into googleusers values(?,?,?,?,?);";
+        return jdbcTemplate.update(query,id,firstname,lastname,email,timestamp);
     }
 	
 	public int validateRequest(String id,String email)

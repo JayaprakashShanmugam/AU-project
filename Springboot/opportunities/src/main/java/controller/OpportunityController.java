@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -82,7 +83,8 @@ public class OpportunityController {
     @ResponseBody
     public String validateUser(@RequestHeader("authtoken") String id,@PathVariable String firstname,@PathVariable String lastname,@PathVariable String email ){
 		    logger.info("Syncing User details");
-        	if(dao.updateuser(id,firstname,lastname,email)>=1)
+		    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        	if(dao.updateuser(id,firstname,lastname,email,timestamp)>=1)
         	{   
         		
               return "User Synced";
