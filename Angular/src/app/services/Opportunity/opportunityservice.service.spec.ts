@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { OpportunityserviceService } from './opportunityservice.service';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { Opportunity } from './opportunity';
+import { environment } from '../environments/environment';
+
 
 
 describe('OpportunityserviceService', () => {
@@ -29,7 +31,7 @@ describe('OpportunityserviceService', () => {
     expect(opp).toEqual(opportunities);
     
     });
-    const  requestt = httpMock.expectOne('http://localhost:8080/getopportunityid/1');
+    const  requestt = httpMock.expectOne(environment.baseUrl+"getopportunityid/1");
     
     expect(requestt.request.method).toBe("GET");
     
@@ -86,14 +88,14 @@ describe('OpportunityserviceService', () => {
 
     it('should delete an Opportunity', () => {
      
-    service.deleteopportunity(104).subscribe((opp) => {
+    service.deleteopportunity(102).subscribe((opp) => {
     expect(opp).toEqual('Opportunity Deleted Successfully');
     
     });
     
     
     
-    const  requestt = httpMock.expectOne('http://localhost:8080/deleteopportunity/104');
+    const  requestt = httpMock.expectOne(environment.baseUrl+"deleteopportunity/102");
     
     expect(requestt.request.method).toBe("DELETE");
 
@@ -112,7 +114,7 @@ describe('OpportunityserviceService', () => {
           expect(data.length).toEqual(7);
         })
      
-      const  requestt = httpMock.expectOne('http://localhost:8080/getoppurtunities');
+      const  requestt = httpMock.expectOne(environment.baseUrl+"getoppurtunities");
       
       expect(requestt.request.method).toBe("GET");
     
