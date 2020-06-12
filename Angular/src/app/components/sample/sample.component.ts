@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { OpportunityserviceService } from '../opportunityservice.service';
-import { Opportunity } from '../opportunity';
+import { OpportunityserviceService } from '../services/opportunityservice.service';
+import { Opportunity } from '../models/opportunity';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
 

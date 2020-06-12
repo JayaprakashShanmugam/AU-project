@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SampleComponent } from './sample.component';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import { OpportunityserviceService } from '../opportunityservice.service';
+import { OpportunityserviceService } from '../../services/opportunityservice.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserTestingModule } from '@angular/platform-browser/testing';
 

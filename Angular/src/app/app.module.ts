@@ -25,14 +25,14 @@ import {MatSelectModule} from '@angular/material/select';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { SampleComponent } from './sample/sample.component';
 import {HttpClientModule,HttpClient,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { LoginUserService } from './login-user.service';
-import { OpportunityserviceService } from './opportunityservice.service';
+import { LoginUserService } from './services/login-user.service';
+import { OpportunityserviceService } from './services/opportunityservice.service';
 import {MatSnackBar,MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule} from '@angular/router';
 import { TrendsComponent } from './trends/trends.component'
 import { ChartsModule } from 'ng2-charts';
-import { Tokeninterceptor } from './tokeninterceptor';
+import { Tokeninterceptor } from './interceptors/tokeninterceptor';
 
 const config = new AuthServiceConfig([
   {

@@ -1,10 +1,10 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginUserComponent } from './login-user/login-user.component';
-import { UserhomeComponent } from './userhome/userhome.component';
-import { TrendstableComponent } from './trendstable/trendstable.component';
-import { SampleComponent } from './sample/sample.component';
-import { TrendsComponent } from './trends/trends.component'
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { UserhomeComponent } from './components/userhome/userhome.component';
+import { TrendstableComponent } from './components/trendstable/trendstable.component';
+import { SampleComponent } from './components/sample/sample.component';
+import { TrendsComponent } from './components/trends/trends.component'
 
 
 const routes: Routes = [

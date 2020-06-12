@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-import { LoginUserService } from '../login-user.service';
+import { LoginUserService } from '../services/login-user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

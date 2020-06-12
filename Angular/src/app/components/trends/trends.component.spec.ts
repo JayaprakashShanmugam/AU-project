@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { OpportunityserviceService } from '../opportunityservice.service';
+import { OpportunityserviceService } from '../../services/opportunityservice.service';
 import { TrendsComponent } from './trends.component';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 

@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { OpportunityserviceService } from './opportunityservice.service';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { Opportunity } from './opportunity';
-import { environment } from '../environments/environment';
+import { Opportunity } from '../models/opportunity';
+import { environment } from '../../environments/environment';
 
 
 

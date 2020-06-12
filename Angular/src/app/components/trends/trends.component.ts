@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OpportunityserviceService } from '../opportunityservice.service';
+import { OpportunityserviceService } from '../services/opportunityservice.service';
 
 @Component({
   selector: 'app-trends',
