@@ -1,6 +1,5 @@
 package com.accolite.opportunities.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accolite.opportunities.entity.Opportunity;
 import com.accolite.opportunities.exception.OpportunityNotFoundException;
 import com.accolite.opportunities.exception.OpportunityServiceErrorException;
-import com.accolite.opportunities.repository.OpportunityDao;
+import com.accolite.opportunities.service.OpportunityService;
 
 @RestController
 public class OpportunityController {
@@ -28,15 +27,15 @@ public class OpportunityController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	public OpportunityDao dao;
+	public OpportunityService service;
 
 	@GetMapping("/getoppurtunities")
 	public List<Opportunity> opportunityInformation(@RequestHeader("authtoken") String id,
 			@RequestHeader("authemail") String email) {
-		if (dao.validateRequest(id, email) >= 1) {
+		if (service.validateRequestService(id, email) >= 1) {
 
 			logger.info("Getting Opportunity details");
-			List<Opportunity> opportunities = dao.getOpportunities();
+			List<Opportunity> opportunities = service.opportunityInformationService();
 
 			return opportunities;
 		} else {
@@ -49,11 +48,11 @@ public class OpportunityController {
 	@ResponseBody
 	public Opportunity getId(@RequestHeader("authtoken") String id, @RequestHeader("authemail") String email,
 			@PathVariable int oid) {
-		if (dao.validateRequest(id, email) >= 1) {
+		if (service.validateRequestService(id, email) >= 1) {
 			Opportunity getbyid;
 			try {
 
-				getbyid = dao.getid(oid);
+				getbyid = service.getIdService(oid);
 			} catch (EmptyResultDataAccessException e) {
 				throw new OpportunityServiceErrorException();
 			}
@@ -69,8 +68,8 @@ public class OpportunityController {
 	public String validateUser(@RequestHeader("authtoken") String id, @PathVariable String firstname,
 			@PathVariable String lastname, @PathVariable String email) {
 		logger.info("Syncing User details");
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		if (dao.updateuser(id, firstname, lastname, email, timestamp) >= 1) {
+
+		if (service.validateUserService(id, firstname, lastname, email).equals("User Synced")) {
 
 			return "User Synced";
 		} else {
@@ -83,13 +82,13 @@ public class OpportunityController {
 	@ResponseBody
 	public String updateOpportunity(@RequestHeader("authtoken") String id, @RequestHeader("authemail") String email,
 			@RequestBody Opportunity op) {
-		if (dao.validateRequest(id, email) >= 1) {
-			if (dao.update(op.oid, op.description, op.location, op.skills, op.openingCount, op.projectDuration,
-					op.lastDate, op.experience, op.managerName, op.managerEmail) < 1) {
-				throw new OpportunityNotFoundException();
-			} else {
+		if (service.validateRequestService(id, email) >= 1) {
+			if (service.updateOpportunityService(op).equals("Opportunity redefined Successfully")) {
 				logger.info("Updating Opportunity details");
 				return "Opportunity redefined Successfully";
+
+			} else {
+				throw new OpportunityNotFoundException();
 			}
 		} else {
 			return "Non Authenticated User";
@@ -101,13 +100,13 @@ public class OpportunityController {
 	@ResponseBody
 	public String addOpportunity(@RequestHeader("authtoken") String id, @RequestHeader("authemail") String email,
 			@RequestBody Opportunity opp) {
-		if (dao.validateRequest(id, email) >= 1) {
-			if (dao.add(opp.oid, opp.description, opp.location, opp.skills, opp.openingCount, opp.projectDuration,
-					opp.lastDate, opp.experience, opp.managerName, opp.managerEmail) < 1) {
-				throw new OpportunityNotFoundException();
-			} else {
+		if (service.validateRequestService(id, email) >= 1) {
+			if (service.addOpportunityService(opp).equals("Opportunity created Successfully")) {
 				logger.info("Adding Opportunity details");
 				return "Opportunity created Successfully";
+
+			} else {
+				throw new OpportunityNotFoundException();
 			}
 
 		} else {
@@ -120,12 +119,13 @@ public class OpportunityController {
 	@ResponseBody
 	public String deleteOpportunity(@RequestHeader("authtoken") String id, @RequestHeader("authemail") String email,
 			@PathVariable int oid) {
-		if (dao.validateRequest(id, email) >= 1) {
-			if (dao.delete(oid) < 1) {
-				throw new OpportunityNotFoundException();
-			} else {
+		if (service.validateRequestService(id, email) >= 1) {
+			if (service.deleteOpportunityService(oid).equals("Opportunity Deleted Successfully")) {
 				logger.info("Deleting Opportunity details");
 				return "Opportunity Deleted Successfully";
+
+			} else {
+				throw new OpportunityNotFoundException();
 			}
 		} else {
 			return "Non Authenticated User";
