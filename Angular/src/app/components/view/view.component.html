@@ -1,0 +1,97 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+       <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="AU-logo" width="180" height="70"></a></span>
+       <span class="spacer"></span>
+       <a  mat-button color="primary" routerLink="/trendschart">Trends</a>
+          <a  mat-button color="primary" routerLink="/viewtrends">Opportunity</a>
+          <a  mat-button color="primary" routerLink="/home">Logout</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-toolbar>
+    Opportunity&nbsp;&nbsp;&nbsp; 
+  </mat-toolbar>
+  <mat-toolbar>
+  <a  mat-raised-button color="primary"  routerLink="/createtrends">create_new+</a> &nbsp;&nbsp;
+   <mat-icon>search</mat-icon> 
+   <mat-form-field class="example-full-width">
+       <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Opportunity" >   
+   </mat-form-field>   
+  </mat-toolbar>
+  <div class="mat-elevation-z8">
+  
+  
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="oid">
+          <th mat-header-cell *matHeaderCellDef> Opportunity Id </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.oid}} </td>
+        </ng-container>
+         
+    
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.description}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.location}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="skills">
+          <th mat-header-cell *matHeaderCellDef> Skills </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.skills}} </td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="openingcount">
+          <th mat-header-cell *matHeaderCellDef> Openingcount </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.openingcount}} </td>
+        </ng-container>
+        
+         
+        <ng-container matColumnDef="projectduration">
+          <th mat-header-cell *matHeaderCellDef> ProjectDuration </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.projectduration}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="lastdate">
+          <th mat-header-cell *matHeaderCellDef> LastDate </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.lastdate}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="experience">
+          <th mat-header-cell *matHeaderCellDef> Experience </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.experience}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="managername">
+          <th mat-header-cell *matHeaderCellDef> ManagerName </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.managername}} </td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="manageremail">
+          <th mat-header-cell *matHeaderCellDef> ManagerEmail </th>
+          <td mat-cell *matCellDef="let Opportunity"> {{Opportunity.manageremail}} </td>
+        </ng-container>
+  
+       
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let Opportunity">  <button mat-icon-button color="primary" (click)="deleteOpportunity(Opportunity.oid)"> <mat-icon>delete</mat-icon>
+          </button>  &nbsp; &nbsp; <a routerLink="/updatetrends"> <button mat-icon-button color="primary" (click)="getbyid(Opportunity.oid)"> <mat-icon>edit</mat-icon>
+          </button></a></td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    

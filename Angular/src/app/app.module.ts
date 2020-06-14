@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginUserComponent } from './login-user/login-user.component';
-import { UserhomeComponent } from './userhome/userhome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -17,22 +15,25 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
-import { TrendstableComponent } from './trendstable/trendstable.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-import { SampleComponent } from './sample/sample.component';
 import {HttpClientModule,HttpClient,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { LoginUserService } from './services/login-user.service';
-import { OpportunityserviceService } from './services/opportunityservice.service';
+import { LoginUserService } from './login-user.service';
+import { OpportunityserviceService } from './opportunityservice.service';
 import {MatSnackBar,MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule} from '@angular/router';
-import { TrendsComponent } from './trends/trends.component'
 import { ChartsModule } from 'ng2-charts';
-import { Tokeninterceptor } from './interceptors/tokeninterceptor';
+import { Tokeninterceptor } from './tokeninterceptor';
+import { LoginComponent } from './login/login.component';
+import { ViewComponent } from './view/view.component';
+import { UpdateComponent } from './update/update.component';
+import { CreateComponent } from './create/create.component';
+import { TrendschartComponent } from './trendschart/trendschart.component';
+import { createComponent } from '@angular/compiler/src/core';
 
 const config = new AuthServiceConfig([
   {
@@ -49,11 +50,11 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginUserComponent,
-    UserhomeComponent,
-    TrendstableComponent,
-    SampleComponent,
-    TrendsComponent
+    LoginComponent,
+    ViewComponent,
+    UpdateComponent,
+    CreateComponent,
+    TrendschartComponent
     
   
   ],
@@ -98,6 +99,6 @@ export function provideConfig() {
     { provide: HTTP_INTERCEPTORS, useClass: Tokeninterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents:[UserhomeComponent]
+  entryComponents:[CreateComponent]
 })
 export class AppModule { }

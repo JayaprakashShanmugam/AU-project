@@ -1,34 +1,32 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginUserComponent } from './components/login-user/login-user.component';
-import { UserhomeComponent } from './components/userhome/userhome.component';
-import { TrendstableComponent } from './components/trendstable/trendstable.component';
-import { SampleComponent } from './components/sample/sample.component';
-import { TrendsComponent } from './components/trends/trends.component'
+import { LoginComponent } from './login/login.component';
+import { ViewComponent } from './view/view.component';
+import { UpdateComponent } from './update/update.component';
+import { CreateComponent } from './create/create.component';
+import { TrendschartComponent } from './trendschart/trendschart.component';
 
 
 const routes: Routes = [
   {
    path:'home',
-   component: LoginUserComponent
+   component: LoginComponent
   },
   {
     path : 'createtrends',
-    component: UserhomeComponent
+    component: CreateComponent
   },
   {
     path : 'viewtrends',
-    component: TrendstableComponent
+    component: ViewComponent
   },
   {
-    path : 'trends',
-    component: TrendsComponent 
+    path : 'trendschart',
+    component: TrendschartComponent
   },
-
-  
   {
-    path : 'getid',
-    component: SampleComponent
+    path : 'updatetrends',
+    component: UpdateComponent
   },
  
   

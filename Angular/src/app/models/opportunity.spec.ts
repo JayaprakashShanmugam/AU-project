@@ -1,4 +1,4 @@
-import { Opportunity } from '../models/opportunity';
+import { Opportunity } from './opportunity';
 
 describe('Opportunity', () => {
   it('should create an instance', () => {

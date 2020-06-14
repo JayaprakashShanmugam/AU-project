@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+       <span><a href="/home"> <img src="assets/img/accolite-logo.jpg" alt="AU-logo" width="180" height="70"></a></span>
+       <span class="spacer"></span>
+       <a  mat-button color="primary" routerLink="/trendschart">Trends</a>
+          <a  mat-button color="primary" routerLink="/viewtrends">Opportunity</a>
+          <a  mat-button color="primary" routerLink="/home">Logout</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-toolbar>
+      <span>Update Opportunity</span>
+    </mat-toolbar>
+    
+    <mat-card>         
+      <mat-card-content>  
+                      <form>     
+                        <mat-form-field  class="full-width" appearance="outline">
+                          <mat-label>OpportunityId</mat-label>
+                          <input  matInput type="number"  placeholder="OpportunityId" [formControl]="oid" name="oid" [(ngModel)]=message.oid  required>
+                          
+                      </mat-form-field> 
+                        &nbsp;&nbsp;
+                      
+                        <mat-form-field  class="full-width" appearance="outline">
+                          <mat-label>OppurtunityDescription</mat-label>
+                          <input  matInput  placeholder="Description" name="description" [formControl]="description" [(ngModel)]=message.description required>
+                       </mat-form-field>    
+                       <br>
+                      <mat-form-field  class="full-width" appearance="outline">
+                      <mat-label>Location</mat-label>
+                      <input  matInput  placeholder="Location" [formControl]="location" name="location" [(ngModel)]=message.location  required>
+                       </mat-form-field>     
+                       &nbsp;&nbsp;
+                        <mat-form-field   class="full-width" appearance="outline">
+                          <mat-label>Skills</mat-label>
+                          <input  matInput  placeholder="Skills" [formControl]="skills" name="skills" [(ngModel)]=message.skills required>
+                       </mat-form-field> 
+                       <br>          
+                        <mat-form-field  class="full-width" appearance="outline">
+                          <mat-label>OpeningCount</mat-label>
+                          <input  matInput type="number"  placeholder="OpeningCount" [formControl]="openingcount" name="openingcount" [(ngModel)]=message.openingcount required>
+                       </mat-form-field>
+                       &nbsp;&nbsp;
+                      <mat-form-field   class="full-width" appearance="outline">
+                        <mat-label>ProjectDuration</mat-label>
+                        <input  matInput type="number" placeholder="ProjectDuration in Days" [formControl]="projectduration" name="projectduration" [(ngModel)]=message.projectduration required>
+                     </mat-form-field>
+                      
+                     <br>
+                    <mat-form-field  class="full-width" appearance="outline">
+                      <mat-label>LastDate</mat-label>
+                      <input  matInput  placeholder="LastDate" [formControl]="lastdate" name="lastdate" [(ngModel)]=message.lastdate required>
+                   </mat-form-field>
+                   &nbsp;&nbsp;
+              
+                    <mat-form-field  class="full-width" appearance="outline">
+                      <mat-label>Experience</mat-label>
+                      <input  matInput  placeholder="Experience" [formControl]="experience" name="experience"  [(ngModel)]=message.experience required>
+                   </mat-form-field> 
+                   <br>
+    
+                   <mat-form-field  class="full-width" appearance="outline">
+                    <mat-label>ManagerName</mat-label>
+                    <input  matInput  placeholder="ManagerName" [formControl]="managername" name="managername"  [(ngModel)]=message.managername required>
+                 </mat-form-field> 
+                 &nbsp;&nbsp;
+                 
+                   <mat-form-field   class="full-width" appearance="outline">
+                    <mat-label>ManagerEmail</mat-label>
+                    <input  matInput type="email" [formControl]="manageremail"  placeholder="ManagerEmail" name="manageremail" [(ngModel)]=message.manageremail required>
+                    <mat-error *ngIf="manageremail.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                
+              
+             
+                 
+                <br>     
+                <a routerLink="/viewtrends"><button mat-raised-button color="primary" (click)="updatenow()">Update</button></a> &nbsp;&nbsp;&nbsp;   
+                          <button mat-raised-button color="primary" type="reset">Clear</button>    
+                </form>
+      </mat-card-content>    
+    </mat-card> 
+    
