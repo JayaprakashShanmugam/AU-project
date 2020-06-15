@@ -66,21 +66,32 @@ Controller : Opportunity Controller
  
       Classes: 
        1. Opportunity Controller Test  - used for testing each request in controller.
+           
+           getOpportunityforTest() - a helper method used for reusing opportunity instance in all test classes.  
              
              Functions: 
-       1. getOpportunityTest - expects opportunity for specific id.(get)
-       2. getAllOpportunityTest - expects all opportunities.(get)
-       3. addOpportunity - expects on adding opportunity status.(post)
-       4. updateOpportunity - expects on updating opportunity status for specific id.(put)
-       5. deleteOpportunity - expects on deleting opportunity status for specific id.(delete)
+       1. getOpportunityById_OpportunityIdValue_ReturnsSingleObject - expects opportunity for specific id.(get)
+       2. getAllOpportunity_ObjectListValues_ReturnsListSize - expects all opportunities.(get)
+       3. addOpportunity_SingleObject_ReturnsHttpStatus - expects on adding opportunity status.(post)
+       4. updateOpportunity_SingleObject_ReturnsHttpStatus - expects on updating opportunity status for specific id.(put)
+       5. deleteOpportunity_OpportunityIdValue_ReturnsHttpStatus - expects on deleting opportunity status for specific id.(delete)
+       6. validateUser_UserObjectValues_ReturnsString - expects on validating and updating user details for specific usertoken.(update)
        
-       2. Opportunity Dao Test - fused for testing each function in Opportunity Dao.
+       2. Opportunity Service Test - used for testing each function in Opportunity Service.
       
               Functions: 
-       1. getAllOpportunity - expects all opportunities using dao.getOpportunities.(select)
-       2. addOpportunity - expects on adding opportunity using dao.add.(update)
-       3. updateOpportunity - expects on updating opportunity using dao.update.(update)
-       4. deleteOpportunity - expects on deleting opportunity using dao.delete.(delete) 
+       1. getAllOpportunities_ObjectList_ReturnsListSize - expects all opportunities using OpportunityInformationService.(select)
+       2. addOpportunity_SingleObject_ReturnsOne - expects on adding opportunity using addOpportunityService.(update)
+       3. updateOpportunity_SingleObject_ReturnsOne - expects on updating opportunity using updateOpportunityService.(update)
+       4. deleteOpportunity_OpportunityIdValue_ReturnsOne - expects on deleting opportunity using deleteOpportunityService.(delete) 
+  
+       3. Opportunity Dao Test - used for testing each function in Opportunity Dao.
+      
+              Functions: 
+       1. getAllOpportunities_ObjectList_ReturnsListSize - expects all opportunities using dao.getOpportunities.(select)
+       2. addOpportunity_SingleObject_ReturnsOne - expects on adding opportunity using dao.add.(update)
+       3. updateOpportunity_SingleObject_ReturnsOne - expects on updating opportunity using dao.update.(update)
+       4. deleteOpportunity_OpportunityIdValue_ReturnsOne - expects on deleting opportunity using dao.delete.(delete) 
   
   
   #  Angular Stack
