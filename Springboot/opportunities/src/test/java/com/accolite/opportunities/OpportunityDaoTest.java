@@ -21,8 +21,6 @@ public class OpportunityDaoTest {
 	@Autowired
 	OpportunityDao dao;
 
-	OpportunityControllerTests optest = new OpportunityControllerTests();
-
 	@Test
 	public void addOpportunity_SingleObject_ReturnsOne() {
 		Opportunity opp = OpportunityControllerTests.getOpportunityforTest();
