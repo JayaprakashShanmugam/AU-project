@@ -60,7 +60,7 @@ public class OpportunityDaoTest {
 		List<Opportunity> allOpportunities = dao.getOpportunities();
 
 		assertNotNull(allOpportunities);
-		assertEquals(6, allOpportunities.size());
+		assertEquals(5, allOpportunities.size());
 	}
 
 }
