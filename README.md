@@ -2,9 +2,9 @@
 Accolite User Management System
 
 # Tech Stack
-Angular - Frontend
-SpringBoot -Backend
-mySQL - DB
+      Angular - Frontend
+      SpringBoot -Backend
+      mySQL - DB
 
 #  Spring Boot Stack
 Entity : Opportunity model
@@ -84,10 +84,12 @@ Controller : Opportunity Controller
           1.Opportunity Service: for GET,PUT,POST,DELETE Opportunities
           2.LoginUser Service : for VALIDATE user
           
-       Classes:
+       Models:
           1.Opportunity : oid,description,location,skills,openingDate,projectDuration,lastDate,experience,managerName,managerEmail
-          2. Login : firstName,Lastname,email
-          3. Interceptor : intercepts each http request and add a user token to each request header. 
+          2.Login : firstName,Lastname,email
+          
+      Interceptors:
+          1.Interceptor : intercepts each http request and add a user token to each request header. 
 
        Testing:
           1.Form testing : (FormsModule) expects te form to be empty during initialization and for checking the validation.
