@@ -13,6 +13,8 @@ Entity : Opportunity model
 
 RowMapper : Opportunity RowMapper for mapping each row to mySQLDB.
 
+    Functions : OpportunityRowmapper - used for iterating each rows in mysqlDB [opportunity]
+
 Repository : Opportunity Dao
 
     Functions: 
@@ -22,16 +24,25 @@ Repository : Opportunity Dao
        4. update return type<int> - updates the Opportunity attributes with specified id in DB using JDBC Templte(update).
        5. delete return type<int> - deletes the Opportunity attributes with specified id in DB using JDBC Templte(delete).
        
+Service : Opportunity Service [middleware between Dao and Controller]
+ 
+    Functions: 
+       1. OpportunityInformationService return type<List> - calls getOpportunities method in OpportunityDao.
+       2. getIdService return type<Opportunity> - calls getId method in OpportunityDao.
+       3. addOpportunityService return type<String> - calls add method in OpportunityDao.
+       4. updateOpportunityService return type<String> - calls update method in OpportunityDao.
+       5. deleteOpportunityService return type<String> - calls delete method in OpportunityDao.   
+       
 Controller : Opportunity Controller
  
     Functions: 
-       1. getOpportunities return type<List> - calls getOpportunities method in OpportunityDao.
-       2. getId return type<Opportunity> - calls getId method in OpportunityDao.
-       3. addOpportunity return type<String> - calls add method in OpportunityDao.
-       4. updateOpportunity return type<String> - calls update method in OpportunityDao.
-       5. deleteOpportunity return type<String> - calls delete method in OpportunityDao.
+       1. getOpportunities return type<List> - calls OpportunitiesInformationService method in OpportunityService.
+       2. getId return type<Opportunity> - calls getIdService method in OpportunityService.
+       3. addOpportunity return type<String> - calls addOpportunityService method in OpportunityService.
+       4. updateOpportunity return type<String> - calls updateOpportunityService method in OpportunityService.
+       5. deleteOpportunity return type<String> - calls deleteOpportunityService method in OpportunityService.
        
- Exception : Opportunity Exception Controller
+ Exception : Opportunity Exception Handler
  
     Exceptions: 
        1. OpportunityNotFoundException - handles HTTP NOT_FOUND Exception.
