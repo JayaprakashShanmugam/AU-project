@@ -115,4 +115,17 @@ public class OpportunityControllerTests {
 				opc.opportunityInformation("102430502860166805172", "jayaprakash.shanmugam@accoliteindia.com").size());
 	}
 
+	@Test
+	public void deleteOpportunityNotFound_OpportunityIdValue_ReturnsHttpStatus() throws Exception {
+		mockMvc.perform(delete("/deleteopportunity/999").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void getEmptyOpportunity_OpportunityIdValue_ReturnsSingleObject() throws Exception {
+		mockMvc.perform(get("/getopportunityid/999").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isInternalServerError());
+	}
+
 }
